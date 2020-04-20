@@ -7,18 +7,9 @@
       </h1>
     </div>
     <div class="site-navbar__body clearfix">
-      <el-menu
-        class="site-navbar__menu"
-        mode="horizontal">
-        <el-menu-item index="0" @click="$router.push({ name: 'home' })">
-          <template slot="title">
-           <span>应用中心</span>
-          </template>
-        </el-menu-item>
-        <!-- <el-menu-item class="site-navbar__switch" index="0" @click="sidebarFold = !sidebarFold">
-          <icon-svg name="zhedie"></icon-svg>
-        </el-menu-item> -->
-      </el-menu>
+      <div class="site-navbar__menu home-nav">
+        <div class="item" @click="$router.push({ name: 'applyhome' })"><img src="~@/assets/img/home.png"><span>应用中心</span></div>
+      </div>
     </div>
   </nav>
 </template>
@@ -69,3 +60,35 @@
     }
   }
 </script>
+<style lang="scss">
+.home-nav{
+  width: auto;
+  height: 50px;
+  text-align: center;
+  position: absolute;
+  left: 50%;
+  margin-left: -150px;
+  padding-top: 7px;
+  .item{
+    width: 60px;
+    background: #ffffff;
+    height: 100%;
+    position: relative;
+    img{
+      display: block;
+      height: 36px;
+      width: auto;
+    }
+    span{
+      position: absolute;
+      display: none;
+      bottom: 0;
+      right: -45px;
+      width: 80px;
+    }
+    &:hover{
+      span{ display: block;}
+    }
+  }
+}
+</style>

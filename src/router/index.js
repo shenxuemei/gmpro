@@ -17,13 +17,17 @@ const _import = require('./import-' + process.env.NODE_ENV)
 
 // 全局路由(无需嵌套上左右整体布局)
 const globalRoutes = [
+  { path: '/', component: _import('common/index'), name: '404', meta: { title: '首页' } },
   { path: '/404', component: _import('common/404'), name: '404', meta: { title: '404未找到' } },
-  { path: '/login', component: _import('common/login'), name: 'login', meta: { title: '登录' } }
+  { path: '/login', component: _import('common/login'), name: 'login', meta: { title: '登录' } },
+  { path: '/regist', component: _import('common/regist'), name: 'regist', meta: { title: '注册' } },
+  { path: '/findpwd', component: _import('common/findpwd'), name: 'findpwd', meta: { title: '找回密码' } },
+  { path: '/morelists', component: _import('common/more'), name: 'morelists', meta: { title: '更多' } }
 ]
 
 // 主入口路由(需嵌套上左右整体布局)
 const mainRoutes = {
-  path: '/',
+  path: '/main',
   component: _import('main/apply/main'),
   name: 'main',
   redirect: { name: 'applyhome' },

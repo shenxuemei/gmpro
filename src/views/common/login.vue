@@ -1,43 +1,63 @@
 <template>
-  <div class="site-wrapper site-page--login">
-    <div class="site-content__wrapper">
-      <div class="site-content">
-        <div class="brand-info">
-          <h2 class="brand-info__text">关贸大师</h2>
-          <p class="brand-info__intro"> </p>
+  <div>
+    <LoginHeader></LoginHeader>
+    <div class="box">
+        <div class="contener">
+            <div class="login-panel">
+                <div class="login-panel-inner">
+                    <div class="title">
+                        登&nbsp;录
+                    </div>
+                     <el-form :model="dataForm" ref="dataForm" @keyup.enter.native="dataFormSubmit()">
+                        <div class="form-input cus-padding">
+                            <label class="icon">
+                                <i class="fa fa-user-circle" aria-hidden="true"></i>
+                            </label>
+                            <input class="input-user" name="username" id="user-name" v-model="dataForm.userName" placeholder="请输入账号/手机号" autocomplete="off" />
+                            <label class="errmsg" id="lb-errmsg-user">请输入用户名</label>
+                            
+                        </div>
+                        <div class="form-input cus-padding">
+                            <label class="icon">
+                                <i class="fa fa-lock" aria-hidden="true"></i>
+                            </label>
+                            <input class="input-pwd" name="userpwd" id="user-pwd" v-model="dataForm.password" placeholder="请输入密码" type="password" autocomplete="off" />
+                            <label class="errmsg" id="lb-errmsg-pwd">请输入密码</label>
+                        </div>
+                        <div class="form-input login-code">
+                            <label class="icon">
+                                <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                            </label>
+                            <input class="input-code" name="usercode" id="user-code" v-model="dataForm.captcha" placeholder="请输入验证码" autocomplete="off" />
+                            <label class="errmsg" id="lb-errmsg-code">请输入验证码</label>
+                            <img src="~@/assets/images/code.png" />
+                        </div>
+                        <div class="form-input login-button">
+                            <button class="btn-login" @click="dataFormSubmit()">登&nbsp;录</button>
+                        </div>
+                    </el-form>
+                    <div class="form-next">
+                        <input type="checkbox" id="remember" /><label for="remember" class="remember-label">记住密码</label>
+                        <div class="quick-login">快速登录：<img src="~@/assets/images/QQ.png" alt="QQ登录" title="QQ登录"/><img src="~@/assets/images/wechat.png" alt="微信登录" title="微信登录"/><img src="~@/assets/images/weibo.png" alt="微博登录" title="微博登录"/> </div>
+                        <div style="clear: both;"></div>
+                        <div class="reg-link">
+                          <a href="javascript:" @click="$router.push({ name: 'regist' })">注册账号</a>&nbsp;|&nbsp;
+                          <a href="javascript:" @click="$router.push({ name: 'findpwd' })">找回密码</a>&nbsp;|&nbsp;<a href="/">首页</a>
+                          </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="login-main">
-          <h3 class="login-title">管理员登录</h3>
-          <el-form :model="dataForm" :rules="dataRule" ref="dataForm" @keyup.enter.native="dataFormSubmit()" status-icon>
-            <el-form-item prop="userName">
-              <el-input v-model="dataForm.userName" placeholder="帐号"></el-input>
-            </el-form-item>
-            <el-form-item prop="password">
-              <el-input v-model="dataForm.password" type="password" placeholder="密码"></el-input>
-            </el-form-item>
-            <el-form-item prop="captcha">
-              <el-row :gutter="20">
-                <el-col :span="14">
-                  <el-input v-model="dataForm.captcha" placeholder="验证码">
-                  </el-input>
-                </el-col>
-                <el-col :span="10" class="login-captcha">
-                  <img :src="captchaPath" @click="getCaptcha()" alt="">
-                </el-col>
-              </el-row>
-            </el-form-item>
-            <el-form-item>
-              <el-button class="login-btn-submit" type="primary" @click="dataFormSubmit()">登录</el-button>
-            </el-form-item>
-          </el-form>
-        </div>
-      </div>
     </div>
+    <LoginFooter></LoginFooter>
   </div>
 </template>
 
 <script>
-  import { getUUID } from '@/utils'
+  import LoginHeader from './loginCommon/header.vue'
+  import LoginFooter from './loginCommon/footer.vue'
+  import '@/assets/styles/font-awesome-4.7.0/css/font-awesome.min.css'
+  import '@/assets/styles/login.css'
   export default {
     data () {
       return {
@@ -59,8 +79,12 @@
           //   { required: true, message: '验证码不能为空', trigger: 'blur' }
           // ]
         },
-        captchaPath: ''
+        captchaPath: '0000'
       }
+    },
+    components: {
+      LoginHeader,
+      LoginFooter
     },
     created () {
       this.getCaptcha()
@@ -90,91 +114,12 @@
             })
           }
         })
-      },
-      // 获取验证码
-      getCaptcha () {
-        this.dataForm.uuid = getUUID()
-        this.captchaPath = this.$http.adornUrl(`/captcha.jpg?uuid=${this.dataForm.uuid}`)
       }
+      // 获取验证码
+    //   getCaptcha () {
+    //     this.dataForm.uuid = getUUID()
+    //     this.captchaPath = this.$http.adornUrl(`/captcha.jpg?uuid=${this.dataForm.uuid}`)
+    //   }
     }
   }
 </script>
-
-<style lang="scss">
-  .site-wrapper.site-page--login {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    // background-color: rgba(38, 50, 56, .6);
-    overflow: hidden;
-    &:before {
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: -1;
-      width: 100%;
-      height: 100%;
-      content: "";
-      background-image: url(~@/assets/img/loginbg.jpg);
-      background-size: cover;
-    }
-    .site-content__wrapper {
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      padding: 0;
-      margin: 0;
-      overflow-x: hidden;
-      overflow-y: auto;
-      background-color: transparent;
-    }
-    .site-content {
-      min-height: 100%;
-      padding: 30px 500px 30px 30px;
-    }
-    .brand-info {
-      margin: 220px 100px 0 90px;
-      color: #fff;
-    }
-    .brand-info__text {
-      margin:  0 0 22px 0;
-      font-size: 48px;
-      font-weight: 400;
-      text-transform : uppercase;
-    }
-    .brand-info__intro {
-      margin: 10px 0;
-      font-size: 16px;
-      line-height: 1.58;
-      opacity: .6;
-    }
-    .login-main {
-      position: absolute;
-      top: 100px;
-      right: 150px;
-      padding: 30px 30px 20px 30px;
-      width: 470px;
-      height: 400px;
-      background: #ffffff;
-      border-radius: 8px;
-    }
-    .login-title {
-      font-size: 16px;
-    }
-    .login-captcha {
-      overflow: hidden;
-      > img {
-        width: 100%;
-        cursor: pointer;
-      }
-    }
-    .login-btn-submit {
-      width: 100%;
-      margin-top: 38px;
-    }
-  }
-</style>

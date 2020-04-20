@@ -1,8 +1,8 @@
 <template>
   <main class="site-content" :class="{ 'site-content--tabs': $route.meta.isTab }"  :style="{paddingRight: mainRight + 'px'}">
-    <div class="bread-box" v-if="menuActiveId">
+    <div class="bread-box">
       <el-breadcrumb separator="/">
-        <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+        <el-breadcrumb-item :to="{ path: '/main' }">首页</el-breadcrumb-item>
         <el-breadcrumb-item v-for="(item, index) in breadList" :key="index">{{item}}</el-breadcrumb-item>
       </el-breadcrumb>
     </div>

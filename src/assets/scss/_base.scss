@@ -595,10 +595,100 @@ img {
     line-height: 28px;
   }
 }
-.site-sidebar--dark .site-sidebar__menu.el-menu .el-menu-item:focus, .site-sidebar--dark .site-sidebar__menu.el-menu .el-menu-item:hover, .site-sidebar--dark .site-sidebar__menu.el-menu .el-submenu > .el-submenu__title:focus, .site-sidebar--dark .site-sidebar__menu.el-menu .el-submenu > .el-submenu__title:hover, .site-sidebar--dark > .el-menu--popup .el-menu-item:focus, .site-sidebar--dark > .el-menu--popup .el-menu-item:hover, .site-sidebar--dark > .el-menu--popup .el-submenu > .el-submenu__title:focus, .site-sidebar--dark > .el-menu--popup .el-submenu > .el-submenu__title:hover, .site-sidebar--dark-popper .site-sidebar__menu.el-menu .el-menu-item:focus, .site-sidebar--dark-popper .site-sidebar__menu.el-menu .el-menu-item:hover, .site-sidebar--dark-popper .site-sidebar__menu.el-menu .el-submenu > .el-submenu__title:focus, .site-sidebar--dark-popper .site-sidebar__menu.el-menu .el-submenu > .el-submenu__title:hover, .site-sidebar--dark-popper > .el-menu--popup .el-menu-item:focus, .site-sidebar--dark-popper > .el-menu--popup .el-menu-item:hover, .site-sidebar--dark-popper > .el-menu--popup .el-submenu > .el-submenu__title:focus, .site-sidebar--dark-popper > .el-menu--popup .el-submenu > .el-submenu__title:hover{
+.site-sidebar--dark .site-sidebar__menu.el-menu .el-menu-item:hover,
+.site-sidebar--dark .site-sidebar__menu.el-menu .el-submenu > .el-submenu__title:hover,
+.site-sidebar--dark > .el-menu--popup .el-menu-item:hover,
+.site-sidebar--dark > .el-menu--popup .el-submenu > .el-submenu__title:hover,
+.site-sidebar--dark-popper .site-sidebar__menu.el-menu .el-menu-item:hover,
+.site-sidebar--dark-popper .site-sidebar__menu.el-menu .el-submenu > .el-submenu__title:hover,
+.site-sidebar--dark-popper > .el-menu--popup .el-menu-item:hover,
+.site-sidebar--dark-popper > .el-menu--popup .el-submenu > .el-submenu__title:hover{
   background-color: $navbar--background-color;
   color: #fff;
 }
 .el-table--medium td, .el-table--medium th{
   padding: 3px 0;
+}
+
+// form
+.card-no-padd{
+  .el-card__body{
+    padding: 0;
+    .demo-form-head{
+      height: 45px;
+      width: 100%;
+      padding: 0 20px;
+      position: relative;
+      border-bottom: 1px solid #9f9f9f;
+      h2{
+        width: 350px;
+        display: block;
+        height: 45px;
+        line-height: 45px;
+        font-size: 16px;
+        font-weight: 400;
+      }
+      .button-list{
+        width: 100%;
+        height: 45px;
+        padding-left: 370px;
+        padding-right: 20px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        text-align: right;
+        .item{
+          display: inline-block;
+          margin-top: 13px;
+          width: 20px;
+          height: 20px;
+          margin-left: 10px;
+        }
+        .item.icon-item1{
+          background: url(../img/icon_form_01.png) center center no-repeat;
+          background-size: 20px auto;
+        }
+        .item.icon-item2{
+          background: url(../img/icon_form_02.png) center center no-repeat;
+          background-size: 20px auto;
+        }
+        .item.icon-item3{
+          background: url(../img/icon_form_03.png) center center no-repeat;
+          background-size: 20px auto;
+        }
+        .item.icon-item4{
+          background: url(../img/icon_form_04.png) center center no-repeat;
+          background-size: 20px auto;
+        }
+        .item.icon-item5{
+          background: url(../img/icon_form_05.png) center center no-repeat;
+          background-size: 20px auto;
+        }
+      }
+    }
+    .operation-box{
+      padding-top: 3px;
+      width: 100%;
+      height: 30px;
+      text-align: right;
+      .item{
+        height: 22px;
+        line-height: 22px;
+        display: inline-block;
+        border-left: 1px solid #efefef;
+        padding: 0 20px;
+        &:hover{
+          color: $navbar--background-color;
+          cursor: pointer;
+        }
+        span{
+          display: block;
+        }
+      }
+    }
+    .demo-form{
+      padding: 20px;
+      border-bottom: 1px solid #efefef;
+    }
+  }
 }

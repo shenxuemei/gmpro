@@ -27,7 +27,8 @@
         </div>
       </el-row>
       <div class="fix-box-bottom">
-        <a href="javascript:">更多...</a>
+        <!-- <a href="javascript:" @click="$router.push({ name: 'more' })">更多...</a> -->
+         <router-link target="_blank" :to="{path:'morelists'}">更多...</router-link>
       </div>
     </div>
   </aside>

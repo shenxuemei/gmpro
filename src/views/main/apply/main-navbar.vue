@@ -9,23 +9,16 @@
       </h1>
     </div>
     <div class="site-navbar__body clearfix">
-      <el-menu
-        default-active="0"
-        class="site-navbar__menu"
-        mode="horizontal">
-         <el-menu-item index="0" @click="$router.push({ name: 'applyhome' })">
-          <template slot="title">
-           <span>应用中心</span>
-          </template>
-        </el-menu-item>
-      </el-menu>
+      <div class="site-navbar__menu home-nav">
+        <div class="item" @click="$router.push({ name: 'applyhome' })"><img src="~@/assets/img/home.png"><span>应用中心</span></div>
+      </div>
       <el-menu
         class="site-navbar__menu site-navbar__menu--right"
         mode="horizontal">
         <el-menu-item class="site-navbar__avatar" index="3">
           <el-dropdown :show-timeout="0" placement="bottom">
             <span class="el-dropdown-link">
-              <img src="~@/assets/img/avatar.png" :alt="userName">{{ userName }}
+              <img src="~@/assets/img/avatar.png" :alt="userName">
             </span>
             <el-dropdown-menu slot="dropdown">
               <el-dropdown-item>
@@ -94,3 +87,35 @@
     }
   }
 </script>
+<style lang="scss">
+.home-nav{
+  width: auto;
+  height: 50px;
+  text-align: center;
+  position: absolute;
+  left: 50%;
+  margin-left: -150px;
+  padding-top: 7px;
+  .item{
+    width: 60px;
+    background: #ffffff;
+    height: 100%;
+    position: relative;
+    img{
+      display: block;
+      height: 36px;
+      width: auto;
+    }
+    span{
+      position: absolute;
+      display: none;
+      bottom: 0;
+      right: -45px;
+      width: 80px;
+    }
+    &:hover{
+      span{ display: block;}
+    }
+  }
+}
+</style>

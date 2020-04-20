@@ -1,8 +1,8 @@
 <template>
   <div class="mod-home">
-    <!-- 图表位置--start -->
-    <div class="mod-demo-echarts">
-      <el-card>
+    <el-card>
+      <!-- 图表位置--start -->
+      <div class="mod-demo-echarts">
         <el-row>
           <el-col :span="8">
             <div id="J_chartLineBox" class="chart-box"></div>
@@ -14,26 +14,26 @@
             <div id="J_chartScatterBox" class="chart-box"></div>
           </el-col>
         </el-row>
-      </el-card>
-    </div>
-    <!-- 图表位置--end -->
-    <el-card class="card-mt">
-      <template>
-        <el-tabs v-model="activeName" @tab-click="handleClick">
-          <el-tab-pane label="我的关注" name="first">
-            <TabOne></TabOne>
-          </el-tab-pane>
-          <el-tab-pane label="事件日程" name="second">
-            <TabTwo></TabTwo>
-          </el-tab-pane>
-          <el-tab-pane label="预警提示" name="third">
-            <TabThree></TabThree>
-          </el-tab-pane>
-          <el-tab-pane label="沟通会话" name="fourth">
-            <TabFour></TabFour>
-          </el-tab-pane>
-        </el-tabs>
-      </template>
+      </div>
+      <!-- 图表位置--end -->
+      <div class="card-mt">
+        <template>
+          <el-tabs v-model="activeName" @tab-click="handleClick">
+            <el-tab-pane label="我的关注" name="first">
+              <TabOne></TabOne>
+            </el-tab-pane>
+            <el-tab-pane label="事件日程" name="second">
+              <TabTwo></TabTwo>
+            </el-tab-pane>
+            <el-tab-pane label="预警提示" name="third">
+              <TabThree></TabThree>
+            </el-tab-pane>
+            <el-tab-pane label="沟通会话" name="fourth">
+              <TabFour></TabFour>
+            </el-tab-pane>
+          </el-tabs>
+        </template>
+      </div>
     </el-card>
   </div>
 </template>
