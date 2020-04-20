@@ -30,35 +30,35 @@ a{
 .wrapper-content{
     padding:40px 8px 16px;
 }
-.header{
+.findpwd .header{
     text-align: center;
     padding:40px 8px 16px;
 }
-.logo img{
+.findpwd .logo img{
     width:64px;
     height: 64px;
 }
-.header .title{
+.findpwd .header .title{
     margin-top: 20px;
     margin-bottom: 30px;
 }
-.password-reset-form{
+.findpwd .password-reset-form{
     max-width:320px;
     margin: 0 auto;
 }
-.form-item{
+.findpwd .findpwd .form-item{
     margin-bottom: 16px;
     position: relative;
 }
-.form-input-wrapper{
+.findpwd .form-input-wrapper{
     width:100%;
     position: relative;
 }
-.form-input-control{
+.findpwd .form-input-control{
     line-height: 40px;
     position: relative;
 }
-.form-input{
+.findpwd .form-input{
     width:100%;
     border: 1px solid #e9e9e9;
     border-radius: 5px;
@@ -69,16 +69,16 @@ a{
     box-sizing:border-box;
     padding-left: 40px;
 }
-.form-item .icon{
+.findpwd .form-item .icon{
     position: absolute;
     top:8px;
     left: 10px;
     color:#2E7EF4;
 }
-.flex-item{
+.findpwd .flex-item{
     display: flex;
 }
-.btn{
+.findpwd .btn{
     border: 1px solid #e9e9e9;
     border-radius: 5px;
     height: 40px;
@@ -86,27 +86,27 @@ a{
     background-color: #ffffff;
     cursor: pointer;
 }
-.btn-msg{
+.findpwd .btn-msg{
     min-width: 120px;
     margin-left: 10px;
 }
-.btn-submit{
+.findpwd .btn-submit{
     width:100%;
     color: #ffffff;
     font-size: 18px;
     background-color: rgba(63, 136, 245, 0.8);
 }
-.btn-submit:hover{
+.findpwd .btn-submit:hover{
     width:100%;
     color: #ffffff;
     font-size: 18px;
     background-color: rgba(63, 136, 245, 1);
 }
-.other-link{
+.findpwd .other-link{
     font-size: 14px;
     text-align: center;
 }
-.footer{
+.findpwd .footer{
     width:100%;
     text-align: center;
     color:#A8A8A8;

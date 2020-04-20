@@ -214,7 +214,7 @@
             height: 350px
         }
 
-        .header {
+        .homeindex .header {
             position: fixed;
             z-index: 99999;
             top: 0;
