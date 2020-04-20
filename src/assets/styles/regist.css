@@ -1,0 +1,43 @@
+.regist .form-input{
+    margin: 10px 0;
+    position: relative;
+}
+.form-input .input-msg-code{
+    width:250px;
+    vertical-align:middle;
+}
+.form-input .btn-msg-code{
+    background-color: #ffffff;
+    color: #666666;
+    padding: 10px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 1px solid #cccccc;
+}
+.form-input .btn-msg-code:hover{
+    background-color: #eeeeee;
+}
+.form-input #lb-errmsg-msg-code{
+    right:130px;
+}
+.form-next .login-link{
+    float: left;
+}
+.login-panel-inner{
+    padding-bottom: 60px;
+    padding-top: 10px;
+}
+
+.form-input .btn-disabled{
+    background-color: #cccccc;
+}
+.form-input #protocol{
+    width:auto;
+    height: auto;
+}
+
+@media (max-width:500px) {
+    .form-input .input-msg-code{
+        width:50%;
+    }
+}
