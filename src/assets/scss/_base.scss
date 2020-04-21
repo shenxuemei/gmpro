@@ -594,6 +594,17 @@ img {
     height: 28px;
     line-height: 28px;
   }
+  .el-form-item__error {
+    color: #f56c6c;
+    padding-top: 4px;
+    top: 5px;
+    left: none;
+    right: 5px;
+  }
+}
+.el-input--medium .el-input__inner,.el-form-item--medium .el-form-item__content, .el-form-item--medium .el-form-item__label{
+  height: 28px;
+  line-height: 28px;
 }
 .site-sidebar--dark .site-sidebar__menu.el-menu .el-menu-item:hover,
 .site-sidebar--dark .site-sidebar__menu.el-menu .el-submenu > .el-submenu__title:hover,
@@ -691,4 +702,32 @@ img {
       border-bottom: 1px solid #efefef;
     }
   }
+}
+.btns-box{
+  height: 45px; 
+  border-bottom: 1px solid $navbar--background-color;
+  margin-bottom: 15px;
+  margin-top: 15px;
+  position: relative;
+  .btns-formedit,.btns-back, .btns-next{
+    position: absolute;
+    top: 9px;
+    img {
+      width: auto;
+      height: 28px;
+    }
+  }
+  .btns-formedit{
+    width: 200px;
+    text-align: center;
+    left: 50%;
+    margin-left: -100px;
+    span{ display: inline-block; margin: 0 10px;}
+  }
+  .btns-formedit span, .btns-back, .btns-next{
+    width: 28px;
+    height: 28px;
+  }
+  .btns-back { left: 0px;}
+  .btns-next{ right: 0; }
 }

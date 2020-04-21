@@ -17,38 +17,12 @@
       <div class="item"><span>下载CSV</span></div>
     </div>
     <div class="demo-form">
-      <el-form :model="dataForm" :rules="dataRule" ref="dataForm" @keyup.enter.native="dataFormSubmit()" label-width="80px">
-        <el-form-item label="用户名" prop="account">
-          <el-input v-model="dataForm.account" placeholder="登录帐号"></el-input>
-        </el-form-item>
-        <el-form-item label="姓名" prop="userName">
-          <el-input v-model="dataForm.userName" placeholder="姓名"></el-input>
-        </el-form-item>
-        <el-form-item label="密码" prop="password" :class="{ 'is-required': !dataForm.id }">
-          <el-input v-model="dataForm.password" type="password" placeholder="密码"></el-input>
-        </el-form-item>
-        <el-form-item label="确认密码" prop="comfirmPassword" :class="{ 'is-required': !dataForm.id }">
-          <el-input v-model="dataForm.comfirmPassword" type="password" placeholder="确认密码"></el-input>
-        </el-form-item>
-        <el-form-item label="手机号" prop="mobile">
-          <el-input v-model="dataForm.mobile" placeholder="手机号"></el-input>
-        </el-form-item>
-        <el-form-item label="角色" size="mini" prop="roleIdList">
-          <el-checkbox-group v-model="dataForm.roleIdList">
-            <el-checkbox v-for="role in roleList" :key="role.id" :label="role.id">{{ role.roleName }}</el-checkbox>
-          </el-checkbox-group>
-        </el-form-item>
-        <el-form-item label="状态" size="mini" prop="status">
-          <el-radio-group v-model="dataForm.status">
-            <el-radio :label="1">禁用</el-radio>
-            <el-radio :label="0">正常</el-radio>
-          </el-radio-group>
-        </el-form-item>
-      </el-form>
-      <span slot="footer" class="dialog-footer">
-        <el-button @click="visible = false">取消</el-button>
-        <el-button type="primary" @click="dataFormSubmit()">确定</el-button>
-      </span>
+      <el-tabs v-model="activeName" @tab-click="handleClick">
+        <el-tab-pane label="表头信息" name="first">表头信息</el-tab-pane>
+        <el-tab-pane label="备案料件" name="second">备案料件</el-tab-pane>
+        <el-tab-pane label="备案成品" name="third">备案成品</el-tab-pane>
+        <el-tab-pane label="单损耗" name="fourth">单损耗</el-tab-pane>
+      </el-tabs>
     </div>
   </el-card>
 </template>
@@ -58,21 +32,16 @@
     data () {
       return {
         visible: false,
+        activeName: 'second',
         dataForm: {
-          id: 0,
-          account: '',
-          userName: '',
-          password: '',
-          comfirmPassword: '',
-          mobile: '',
-          roleIdList: [],
-          status: 1
-        },
-        dataRule: {
+          id: 0
         }
       }
     },
     methods: {
+      handleClick (tab, event) {
+        console.log(tab, event)
+      },
       init (id) {
         this.dataForm.id = id || 0
         this.visible = true
