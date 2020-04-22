@@ -11,7 +11,10 @@ export default {
     sidebarFold: false,
     // 侧边栏, 菜单
     menuList: [],
+    navRefundList: [],
+    navCollectionList: [],
     menuActiveName: '',
+    menuActiveName2: '',
     // 主入口标签页
     mainTabs: [],
     mainTabsActiveName: '',
@@ -33,8 +36,17 @@ export default {
     updateMenuList (state, list) {
       state.menuList = list
     },
+    updateNavRefundList (state, list) {
+      state.navRefundList = list
+    },
+    updateNavCollectionList (state, list) {
+      state.navCollectionList = list
+    },
     updateMenuActiveName (state, name) {
       state.menuActiveName = name
+    },
+    updateMenuActiveName2 (state, name) {
+      state.menuActiveName2 = name
     },
     updateMainTabs (state, tabs) {
       state.mainTabs = tabs

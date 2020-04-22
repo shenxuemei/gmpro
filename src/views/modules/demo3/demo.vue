@@ -4,7 +4,7 @@
       <el-card>
         <el-form :inline="true" :model="dataForm" @keyup.enter.native="getDataList()">
           <el-row>
-            <el-form-item label="账册编号：">
+            <el-form-item label="demo3">
               <el-input v-model="dataForm.userName" clearable></el-input>
             </el-form-item>
           </el-row>

@@ -71,6 +71,10 @@
         get () { return this.$store.state.common.menuActiveName },
         set (val) { this.$store.commit('common/updateMenuActiveName', val) }
       },
+      menuActiveName2: {
+        get () { return this.$store.state.common.menuActiveName2 },
+        set (val) { this.$store.commit('common/updateMenuActiveName2', val) }
+      },
       mainTabs: {
         get () { return this.$store.state.common.mainTabs },
         set (val) { this.$store.commit('common/updateMainTabs', val) }
@@ -81,6 +85,7 @@
       },
       siteContentViewHeight () {
         let menuList = this.$store.state.common.menuList // 菜单路由
+        let navRefundList = this.$store.state.common.navRefundList // 菜单路由
         let menuActiveId = this.$router.currentRoute.meta.menuId  // 当前点击路由Id
         let menuActiveName = this.$router.currentRoute.meta.title // 当前点击路由name
         this.menuActiveId = menuActiveId
@@ -93,6 +98,12 @@
               if (menuList[i].list[j].id === menuActiveId) {
                 this.$set(resList, 0, menuList[i].name)
                 this.$set(resList, 1, menuActiveName)
+              }
+            }
+          } else {
+            for (let k = 0; k < navRefundList.length; k++) {
+              if (navRefundList[k].id === menuActiveId) {
+                this.$set(resList, 0, navRefundList[i].name)
               }
             }
           }

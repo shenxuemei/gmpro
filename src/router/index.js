@@ -80,9 +80,20 @@ router.beforeEach((to, from, next) => {
       params: http.adornParams()
     }).then(({data}) => {
       if (data && data.code === 0) {
-        fnAddDynamicMenuRoutes(data.menuList)
+        // 加务关贸 动态菜单
+        let dynamicMenuRoutes = fnAddDynamicMenuRoutes(data.menuList)
+        sessionStorage.setItem('dynamicMenuRoutes', dynamicMenuRoutes)
+        // 加务关贸 收藏的动态菜单
+        let dynamicMenuRoutesCollectionList = fnAddDynamicMenuRoutes(data.navCollectionList)
+        sessionStorage.setItem('dynamicMenuRoutesCollectionList', dynamicMenuRoutesCollectionList)
+        // // 退税助手 动态菜单
+        let dynamicMenuRoutesRefundList = fnAddDynamicMenuRoutes(data.navRefundList)
+        sessionStorage.setItem('dynamicMenuRoutesRefundList', dynamicMenuRoutesRefundList)
+
         router.options.isAddDynamicMenuRoutes = true
         sessionStorage.setItem('menuList', JSON.stringify(data.menuList || '[]'))
+        sessionStorage.setItem('navCollectionList', JSON.stringify(data.navCollectionList || '[]'))
+        sessionStorage.setItem('navRefundList', JSON.stringify(data.navRefundList || '[]'))
         next({ ...to, replace: true })
       } else {
         sessionStorage.setItem('menuList', '[]')
@@ -157,9 +168,10 @@ function fnAddDynamicMenuRoutes (menuList = [], routes = []) {
       mainRoutes,
       { path: '*', redirect: { name: '404' } }
     ])
-    sessionStorage.setItem('dynamicMenuRoutes', JSON.stringify(mainRoutes.children || '[]'))
+    // sessionStorage.setItem('dynamicMenuRoutes', JSON.stringify(mainRoutes.children || '[]'))
     console.log('%c!<-------------------- 动态(菜单)路由 e -------------------->', 'color:blue')
   }
+  return JSON.stringify(mainRoutes.children || '[]')
 }
 
 export default router

@@ -55,10 +55,36 @@ var dataList = [
 ]
 var navDataList = [
   {
-    'id': 30,
+    'id': 1,
     'parentId': 0,
     'parentName': null,
-    'name': '电子账册备案',
+    'name': '加贸保税',
+    'url': 'demo/demo',
+    'perms': null,
+    'type': 0,
+    'icon': '',
+    'orderNum': 0,
+    'open': null,
+    'list': null
+  },
+  {
+    'id': 2,
+    'parentId': 0,
+    'parentName': null,
+    'name': '出口i退税',
+    'url': 'demo2/demo',
+    'perms': null,
+    'type': 0,
+    'icon': '',
+    'orderNum': 0,
+    'open': null,
+    'list': null
+  },
+  {
+    'id': 3,
+    'parentId': 0,
+    'parentName': null,
+    'name': '物流通关',
     'url': '',
     'perms': null,
     'type': 0,
@@ -67,10 +93,34 @@ var navDataList = [
     'open': null,
     'list': [
       {
-        'id': 39,
-        'parentId': 30,
+        'id': 4,
+        'parentId': 3,
         'parentName': null,
-        'name': '企业归并关系1',
+        'name': '预配舱单',
+        'url': 'demo3/demo',
+        'perms': null,
+        'type': 0,
+        'icon': '',
+        'orderNum': 0,
+        'open': null
+      },
+      {
+        'id': 5,
+        'parentId': 3,
+        'parentName': null,
+        'name': '进口报关作业',
+        'url': 'demo/demo',
+        'perms': null,
+        'type': 0,
+        'icon': '',
+        'orderNum': 0,
+        'open': null
+      },
+      {
+        'id': 6,
+        'parentId': 3,
+        'parentName': null,
+        'name': '运抵港口',
         'url': 'demo/demo',
         'perms': null,
         'type': 0,
@@ -81,10 +131,10 @@ var navDataList = [
     ]
   },
   {
-    'id': 31,
+    'id': 7,
     'parentId': 0,
     'parentName': null,
-    'name': '出口耗用明细统计',
+    'name': '出口收付汇',
     'url': null,
     'perms': null,
     'type': 0,
@@ -93,10 +143,46 @@ var navDataList = [
     'open': null,
     'list': [
       {
-        'id': 32,
-        'parentId': 31,
+        'id': 8,
+        'parentId': 7,
         'parentName': null,
-        'name': '223',
+        'name': '出口单证',
+        'url': 'demo2/demo',
+        'perms': null,
+        'type': 0,
+        'icon': '',
+        'orderNum': 0,
+        'open': null
+      },
+      {
+        'id': 9,
+        'parentId': 7,
+        'parentName': null,
+        'name': '出货通知单',
+        'url': 'demo2/demo',
+        'perms': null,
+        'type': 0,
+        'icon': '',
+        'orderNum': 0,
+        'open': null
+      },
+      {
+        'id': 10,
+        'parentId': 7,
+        'parentName': null,
+        'name': '出口装箱单',
+        'url': 'demo2/demo',
+        'perms': null,
+        'type': 0,
+        'icon': '',
+        'orderNum': 0,
+        'open': null
+      },
+      {
+        'id': 11,
+        'parentId': 7,
+        'parentName': null,
+        'name': '运抵报告',
         'url': 'demo2/demo',
         'perms': null,
         'type': 0,
@@ -109,52 +195,87 @@ var navDataList = [
 ]
 var navCollectionList = [
   {
-    'id': 41,
+    'id': 1,
     'parentId': 0,
     'parentName': null,
-    'name': '出口耗用明细统计',
-    'url': 'sys/user',
+    'name': '加贸保税',
+    'url': 'demo/demo',
     'perms': null,
     'type': 0,
     'icon': 'system',
     'orderNum': 0,
     'open': null,
-    'list': []
+    'list': null
   },
   {
-    'id': 40,
+    'id': 2,
     'parentId': 0,
     'parentName': null,
-    'name': '进口报关单证',
-    'url': 'sys/user',
+    'name': '出口i退税',
+    'url': 'demo2/demo',
     'perms': null,
     'type': 0,
     'icon': 'system',
     'orderNum': 0,
     'open': null,
-    'list': []
+    'list': null
   },
   {
-    'id': 42,
+    'id': 8,
     'parentId': 0,
     'parentName': null,
-    'name': '核注清单申报',
-    'url': 'sys/user',
+    'name': '出口单证',
+    'url': 'demo2/demo',
     'perms': null,
     'type': 0,
     'icon': 'system',
     'orderNum': 0,
-    'open': null,
-    'list': []
+    'open': null
+  },
+  {
+    'id': 9,
+    'parentId': 0,
+    'parentName': null,
+    'name': '出货通知单',
+    'url': 'demo2/demo',
+    'perms': null,
+    'type': 0,
+    'icon': 'system',
+    'orderNum': 0,
+    'open': null
+  },
+  {
+    'id': 4,
+    'parentId': 0,
+    'parentName': null,
+    'name': '预配舱单',
+    'url': 'demo3/demo',
+    'perms': null,
+    'type': 0,
+    'icon': 'system',
+    'orderNum': 0,
+    'open': null
+  },
+  {
+    'id': 5,
+    'parentId': 0,
+    'parentName': null,
+    'name': '进口报关作业',
+    'url': 'demo/demo',
+    'perms': null,
+    'type': 0,
+    'icon': 'system',
+    'orderNum': 0,
+    'open': null
   }
 ]
 let navRefundList = [
   {
-    'id': 50,
+    'id': 20,
     'parentId': 0,
     'parentName': null,
     'name': '报关单采集',
-    'url': 'sys/user',
+    'url': 'demo4/demo',
     'perms': null,
     'type': 0,
     'icon': 'system',
@@ -163,11 +284,11 @@ let navRefundList = [
     'list': []
   },
   {
-    'id': 60,
+    'id': 21,
     'parentId': 0,
     'parentName': null,
     'name': '进项发票下载',
-    'url': 'sys/user',
+    'url': 'demo4/demo',
     'perms': null,
     'type': 0,
     'icon': 'system',
