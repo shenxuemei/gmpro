@@ -1,50 +1,30 @@
-body, h1, h2, h3, h4, h5, h6, p, dl, dt, dd, ul, ol, li, img, pre, form, button, textarea, th, td {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    outline: 0
-}
 
-html, body {
-    font-size: 100%;
-    -ms-text-size-adjust: 100%;
-    -webkit-text-size-adjust: 100%;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    vertical-align: baseline
-}
-body{
-    background-color: rgb(250,250,250);
-}
-a{
-    color:#009AF0;
-    text-decoration: none;
-}
-.main-wrapper{
+.findpwd{
     width:400px;
     margin: 0 auto;
     border: 1px solid #e9e9e9;
     border-radius: 5px;
     background-color: #ffffff;
 }
-.wrapper-content{
+.findpwd .wrapper-content{
     padding:40px 8px 16px;
 }
-.findpwd .header{
+.findpwd .find-header{
     text-align: center;
     padding:40px 8px 16px;
 }
-.findpwd .logo img{
+.findpwd .find-logo img{
     width:64px;
     height: 64px;
 }
-.findpwd .header .title{
+.findpwd .find-header .title{
     margin-top: 20px;
     margin-bottom: 30px;
 }
 .findpwd .password-reset-form{
-    max-width:320px;
+    width: auto;
     margin: 0 auto;
+    padding-left: 30px;
 }
 .findpwd .findpwd .form-item{
     margin-bottom: 16px;
@@ -58,9 +38,8 @@ a{
     line-height: 40px;
     position: relative;
 }
-.findpwd .form-input{
+/* .findpwd .form-input{
     width:100%;
-    border: 1px solid #e9e9e9;
     border-radius: 5px;
     height: 30px;
     padding: 0px 10px;
@@ -69,6 +48,7 @@ a{
     box-sizing:border-box;
     padding-left: 40px;
 }
+.findpwd .form-input{ margin: 0px 0px;} */
 .findpwd .form-item .icon{
     position: absolute;
     top:8px;

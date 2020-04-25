@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="login-box">
     <LoginHeader></LoginHeader>
     <div class="box">
         <div class="contener">
@@ -8,33 +8,39 @@
                     <div class="title">
                         登&nbsp;录
                     </div>
-                     <el-form :model="dataForm" ref="dataForm" @keyup.enter.native="dataFormSubmit()">
-                        <div class="form-input cus-padding">
-                            <label class="icon">
-                                <i class="fa fa-user-circle" aria-hidden="true"></i>
-                            </label>
-                            <input class="input-user" name="username" id="user-name" v-model="dataForm.userName" placeholder="请输入账号/手机号" autocomplete="off" />
-                            <label class="errmsg" id="lb-errmsg-user">请输入用户名</label>
-                            
-                        </div>
-                        <div class="form-input cus-padding">
-                            <label class="icon">
-                                <i class="fa fa-lock" aria-hidden="true"></i>
-                            </label>
-                            <input class="input-pwd" name="userpwd" id="user-pwd" v-model="dataForm.password" placeholder="请输入密码" type="password" autocomplete="off" />
-                            <label class="errmsg" id="lb-errmsg-pwd">请输入密码</label>
-                        </div>
-                        <div class="form-input login-code">
-                            <label class="icon">
+                    <el-form :model="dataForm" :rules="dataRule" ref="dataForm" @keyup.enter.native="dataFormSubmit()" status-icon class="form-input">
+                      <el-form-item prop="userName">
+                        <el-input v-model="dataForm.userName" placeholder="帐号"></el-input>
+                        <span class="icon">
+                            <i class="fa fa-user-circle" aria-hidden="true"></i>
+                        </span>
+                      </el-form-item>
+                      <el-form-item prop="password">
+                        <el-input v-model="dataForm.password" type="password" placeholder="密码"></el-input>
+                        <span class="icon">
+                            <i class="fa fa-lock" aria-hidden="true"></i>
+                        </span>
+                      </el-form-item>
+                      <el-form-item prop="captcha">
+                        <el-row :gutter="20">
+                          <el-col :span="14">
+                            <el-input v-model="dataForm.captcha" placeholder="验证码">
+                            </el-input>
+                            <span class="icon icon-exclamation">
                                 <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
-                            </label>
-                            <input class="input-code" name="usercode" id="user-code" v-model="dataForm.captcha" placeholder="请输入验证码" autocomplete="off" />
-                            <label class="errmsg" id="lb-errmsg-code">请输入验证码</label>
-                            <img src="~@/assets/images/code.png" />
-                        </div>
-                        <div class="form-input login-button">
-                            <button class="btn-login" @click="dataFormSubmit()">登&nbsp;录</button>
-                        </div>
+                            </span>
+                          </el-col>
+                          <el-col :span="10" class="login-captcha">
+                            <!-- <img :src="captchaPath" @click="getCaptcha()" alt=""> -->
+                             <img src="~@/assets/images/code.png" />
+                          </el-col>
+                        </el-row>
+                      </el-form-item>
+                      <div class="form-input login-button">
+                        <el-form-item>
+                          <el-button class="btn-login" type="danger" @click="dataFormSubmit()">登录</el-button>
+                        </el-form-item>
+                      </div>
                     </el-form>
                     <div class="form-next">
                         <input type="checkbox" id="remember" /><label for="remember" class="remember-label">记住密码</label>

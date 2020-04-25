@@ -38,7 +38,7 @@
         </div>
         
         <el-menu
-          :default-active="menuActiveName2 || 'home'"
+          :default-active="menuActiveName || 'home'"
           class="site-sidebar__menu">
           <sub-menu
             v-for="menu in navRefundList"
@@ -62,7 +62,7 @@
   export default {
     data () {
       return {
-        navShow: 0,
+        navShow: 1,
         dynamicMenuRoutes: [],
         dynamicMenuRoutesCollectionList: [],
         dynamicMenuRoutesRefundList: []
@@ -93,10 +93,6 @@
       menuActiveName: {
         get () { return this.$store.state.common.menuActiveName },
         set (val) { this.$store.commit('common/updateMenuActiveName', val) }
-      },
-      menuActiveName2: {
-        get () { return this.$store.state.common.menuActiveName2 },
-        set (val) { this.$store.commit('common/updateMenuActiveName2', val) }
       },
       mainTabs: {
         get () { return this.$store.state.common.mainTabs },
@@ -157,7 +153,6 @@
             this.mainTabs = this.mainTabs.concat(tab)
           }
           this.menuActiveName = tab.menuId + ''
-          this.mainTabsActiveName = tab.name
         }
       }
     }

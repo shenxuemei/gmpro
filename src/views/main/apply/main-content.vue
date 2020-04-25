@@ -71,10 +71,6 @@
         get () { return this.$store.state.common.menuActiveName },
         set (val) { this.$store.commit('common/updateMenuActiveName', val) }
       },
-      menuActiveName2: {
-        get () { return this.$store.state.common.menuActiveName2 },
-        set (val) { this.$store.commit('common/updateMenuActiveName2', val) }
-      },
       mainTabs: {
         get () { return this.$store.state.common.mainTabs },
         set (val) { this.$store.commit('common/updateMainTabs', val) }
