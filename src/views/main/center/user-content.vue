@@ -1,5 +1,5 @@
 <template>
-  <main class="site-content" :class="{ 'site-content--tabs': $route.meta.isTab }"  :style="{paddingRight: mainRight + 'px'}">
+  <main class="site-content" :class="{ 'site-content--tabs': $route.meta.isTab }">
     <div class="bread-box">
       <div @click="sidebarFold = !sidebarFold" class="item1">
         <img src="~@/assets/img/icon_menu_lg.png" >
@@ -9,26 +9,6 @@
           <el-breadcrumb-item :to="{ path: '/main' }">首页</el-breadcrumb-item>
           <el-breadcrumb-item v-for="(item, index) in breadList" :key="index">{{item}}</el-breadcrumb-item>
         </el-breadcrumb>
-      </div>
-      <div class="item3">
-        <el-dropdown trigger="click">
-          <span class="el-dropdown-link">
-            历史菜单<i class="el-icon-arrow-down el-icon--right"></i>
-          </span>
-          <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item v-for="item in mainTabs" :key="item.name">
-            <router-link :to="{name: item.name}">{{item.title}}</router-link>
-          </el-dropdown-item>
-          </el-dropdown-menu>
-        </el-dropdown>
-        <!-- <el-dropdown split-button type="primary" @click="handleClick">
-        历史菜单
-        <el-dropdown-menu slot="dropdown">
-          <el-dropdown-item v-for="item in mainTabs" :key="item.name">
-            <router-link :to="{name: item.name}">{{item.title}}</router-link>
-          </el-dropdown-item>
-        </el-dropdown-menu>
-      </el-dropdown> -->
       </div>
     </div>
     <!-- 主入口标签页 s -->

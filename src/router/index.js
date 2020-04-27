@@ -21,8 +21,7 @@ const globalRoutes = [
   { path: '/404', component: _import('common/404'), name: '404', meta: { title: '404未找到' } },
   { path: '/login', component: _import('common/login'), name: 'login', meta: { title: '登录' } },
   { path: '/regist', component: _import('common/regist'), name: 'regist', meta: { title: '注册' } },
-  { path: '/findpwd', component: _import('common/findpwd'), name: 'findpwd', meta: { title: '找回密码' } },
-  { path: '/morelists', component: _import('common/more'), name: 'morelists', meta: { title: '更多' } }
+  { path: '/findpwd', component: _import('common/findpwd'), name: 'findpwd', meta: { title: '找回密码' } }
 ]
 
 // 主入口路由(需嵌套上左右整体布局)
@@ -37,7 +36,8 @@ const mainRoutes = {
     // 1. isTab: 是否通过tab展示内容, true: 是, false: 否
     // 2. iframeUrl: 是否通过iframe嵌套展示内容, '以http[s]://开头': 是, '': 否
     // 提示: 如需要通过iframe嵌套展示内容, 但不通过tab打开, 请自行创建组件使用iframe处理!
-    { path: '/applyhome', component: _import('common/applyhome'), name: 'applyhome', meta: { title: '我的应用' } }
+    { path: '/applyhome', component: _import('common/applyhome'), name: 'applyhome', meta: { title: '我的应用' } },
+    { path: '/morelists', component: _import('common/more'), name: 'morelists', meta: { title: '更多' } }
   ],
   beforeEnter (to, from, next) {
     let token = Vue.cookie.get('token')
@@ -89,11 +89,15 @@ router.beforeEach((to, from, next) => {
         // // 退税助手 动态菜单
         let dynamicMenuRoutesRefundList = fnAddDynamicMenuRoutes(data.navRefundList)
         sessionStorage.setItem('dynamicMenuRoutesRefundList', dynamicMenuRoutesRefundList)
+        // 我的个人中心 动态菜单
+        let dynamicMenuRoutesUserCenterList = fnAddDynamicMenuRoutes(data.userCenterList)
+        sessionStorage.setItem('dynamicMenuRoutesUserCenterList', dynamicMenuRoutesUserCenterList)
 
         router.options.isAddDynamicMenuRoutes = true
         sessionStorage.setItem('menuList', JSON.stringify(data.menuList || '[]'))
         sessionStorage.setItem('navCollectionList', JSON.stringify(data.navCollectionList || '[]'))
         sessionStorage.setItem('navRefundList', JSON.stringify(data.navRefundList || '[]'))
+        sessionStorage.setItem('userCenterList', JSON.stringify(data.userCenterList || '[]'))
         next({ ...to, replace: true })
       } else {
         sessionStorage.setItem('menuList', '[]')

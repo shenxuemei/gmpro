@@ -13,6 +13,7 @@ export default {
     menuList: [],
     navRefundList: [],
     navCollectionList: [],
+    userCenterList: [],
     menuActiveName: '',
     menuActiveName2: '',
     // 主入口标签页
@@ -41,6 +42,9 @@ export default {
     },
     updateNavCollectionList (state, list) {
       state.navCollectionList = list
+    },
+    updateUserCenterList (state, list) {
+      state.userCenterList = list
     },
     updateMenuActiveName (state, name) {
       state.menuActiveName = name

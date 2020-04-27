@@ -1,56 +1,58 @@
 <template>
   <aside class="site-sidebar" :class="'site-sidebar--' + sidebarLayoutSkin">
     <div class="site-sidebar__inner">
-      <div class="g_head"><h2>我的应用</h2></div>
-      <el-row>
-        <div class="item-nav">
-          <span>加务关贸</span>
-          <i v-if="navShow === 0" @click="showNav(0)" class="bg_show"></i>
-          <i v-if="navShow === 1" @click="showNav(1)" class="bg_hide"></i>
-        </div>
-        <!--加务关贸 收藏nav -->
-        <el-menu
-          v-if="navShow === 1"
-          :default-active="menuActiveName || 'home'"
-          class="site-sidebar__menu">
+      <!-- <div class="g_head"><h2>我的应用</h2></div> -->
+      <el-menu
+        :default-active="menuActiveName || 'home'"
+        :collapse="sidebarFold"
+        :collapseTransition="false"
+        class="site-sidebar__menu">
+        <el-menu-item-group v-if="navShow === 0">
+          <template slot="title">
+            <div class="item-nav">
+              <span>加务关贸</span>
+              <i v-if="navShow === 0" @click="navShow = 1" class="bg_show"></i>
+              <i v-if="navShow === 1" @click="navShow = 0" class="bg_hide"></i>
+            </div>
+          </template> 
           <sub-menu
             v-for="menu in navCollectionList"
             :key="menu.menuId"
             :menu="menu"
-            :dynamicMenuRoutes="dynamicMenuRoutesCollectionList">
+            :dynamicMenuRoutes="dynamicMenuRoutes">
           </sub-menu>
-        </el-menu>
-        <!--加务关贸 所有nav -->
-        <el-menu v-if="navShow === 0"
-          :default-active="menuActiveName || 'home'"
-          class="site-sidebar__menu">
+        </el-menu-item-group>
+        <el-menu-item-group v-if="navShow === 1">
+          <template slot="title">
+            <div class="item-nav">
+              <span>加务关贸</span>
+              <i v-if="navShow === 0" @click="navShow = 1" class="bg_show"></i>
+              <i v-if="navShow === 1" @click="navShow = 0" class="bg_hide"></i>
+            </div>
+          </template> 
           <sub-menu
             v-for="menu in menuList"
             :key="menu.menuId"
             :menu="menu"
-            :dynamicMenuRoutes="dynamicMenuRoutes">
+            :dynamicMenuRoutes="dynamicMenuRoutesCollectionList">
           </sub-menu>
-        </el-menu>
-      </el-row>
-      <el-row>
-        <div class="item-nav">
-          <span>退税助手</span>
-        </div>
-        
-        <el-menu
-          :default-active="menuActiveName || 'home'"
-          class="site-sidebar__menu">
+        </el-menu-item-group>
+        <el-menu-item-group>
+          <template slot="title">
+            <div class="item-nav">
+              <span>退税助手</span>
+            </div>
+          </template> 
           <sub-menu
             v-for="menu in navRefundList"
             :key="menu.menuId"
             :menu="menu"
             :dynamicMenuRoutes="dynamicMenuRoutesRefundList">
           </sub-menu>
-        </el-menu>
-      </el-row>
+        </el-menu-item-group>
+      </el-menu>
       <div class="fix-box-bottom">
-        <!-- <a href="javascript:" @click="$router.push({ name: 'more' })">更多...</a> -->
-         <router-link target="_blank" :to="{path:'morelists'}">更多...</router-link>
+         <router-link target="_blank" :to="{name:'morelists'}">更多...</router-link>
       </div>
     </div>
   </aside>
@@ -119,41 +121,33 @@
       this.routeHandle(this.$route)
     },
     methods: {
-      showNav (num) {
-        // num = 0 显示所有  num = 1 显示收藏的导航
-        if (num === 0) {
-          this.navShow = 1
-          // menuList 显示所有的
-        } else if (num === 1) {
-          this.navShow = 0
-          // menuList 显示收藏的导航
-        }
-      },
       // 路由操作
       routeHandle (route) {
-        if (route.meta.isTab) {
-          // tab选中, 不存在先添加
-          var tab = this.mainTabs.filter(item => item.name === route.name)[0]
-          if (!tab) {
-            if (route.meta.isDynamic) {
-              route = this.dynamicMenuRoutes.filter(item => item.name === route.name)[0]
-              if (!route) {
-                return console.error('未能找到可用标签页!')
-              }
+        // if (route.meta.isTab) {
+        // tab选中, 不存在先添加
+        var tab = this.mainTabs.filter(item => item.name === route.name)[0]
+        if (!tab) {
+          if (route.meta.isDynamic) {
+            route = this.dynamicMenuRoutes.filter(item => item.name === route.name)[0]
+            if (!route) {
+              return console.error('未能找到可用标签页!')
             }
-            tab = {
-              menuId: route.meta.menuId || route.name,
-              name: route.name,
-              title: route.meta.title,
-              type: isURL(route.meta.iframeUrl) ? 'iframe' : 'module',
-              iframeUrl: route.meta.iframeUrl || '',
-              params: route.params,
-              query: route.query
-            }
-            this.mainTabs = this.mainTabs.concat(tab)
           }
-          this.menuActiveName = tab.menuId + ''
+          tab = {
+            menuId: route.meta.menuId || route.name,
+            name: route.name,
+            title: route.meta.title,
+            type: isURL(route.meta.iframeUrl) ? 'iframe' : 'module',
+            iframeUrl: route.meta.iframeUrl || '',
+            params: route.params,
+            query: route.query
+          }
+          this.mainTabs = this.mainTabs.concat(tab)
+          console.log(this.mainTabs)
         }
+        this.menuActiveName = tab.menuId + ''
+        // }
+        console.log('this.mainTabs')
       }
     }
   }

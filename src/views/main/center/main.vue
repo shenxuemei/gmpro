@@ -6,21 +6,18 @@
     element-loading-text="拼命加载中">
     <template v-if="!loading">
       <use-navbar />
-      <keep-alive>
-        <router-view />
-      </keep-alive>
-      <!-- <main-sidebar /> -->
-      <!-- <div class="site-content__wrapper" :style="{ 'min-height': documentClientHeight + 'px' }">
-        <main-content />
-      </div> -->
+      <user-sidebar />
+      <div class="site-content__wrapper" :style="{ 'min-height': documentClientHeight + 'px' }">
+        <user-content />
+      </div>
     </template>
   </div>
 </template>
 
 <script>
   import UseNavbar from './use-navbar'
-  // import MainSidebar from './main-sidebar'
-  // import MainContent from './main-content'
+  import UserSidebar from './user-sidebar'
+  import UserContent from './user-content'
   export default {
     data () {
       return {
@@ -28,9 +25,9 @@
       }
     },
     components: {
-      UseNavbar
-      // MainSidebar,
-      // MainContent
+      UseNavbar,
+      UserSidebar,
+      UserContent
     },
     computed: {
       documentClientHeight: {

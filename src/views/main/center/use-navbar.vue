@@ -8,8 +8,25 @@
     </div>
     <div class="site-navbar__body clearfix">
       <div class="site-navbar__menu home-nav">
-        <div class="item" @click="$router.push({ name: 'applyhome' })"><img src="~@/assets/img/home.png"><span>应用中心</span></div>
+        <div class="item" @click="$router.push({ name: 'applyhome' })"><div class="img"></div><span>应用中心</span></div>
       </div>
+       <el-menu
+        class="site-navbar__menu site-navbar__menu--right"
+        mode="horizontal">
+        <el-menu-item class="site-navbar__avatar" index="3">
+          <el-dropdown :show-timeout="0" placement="bottom">
+            <span class="el-dropdown-link">
+              <img src="~@/assets/img/avatar.png" :alt="userName">
+            </span>
+            <el-dropdown-menu slot="dropdown">
+              <el-dropdown-item>
+                <router-link target="_blank" :to="{path:'/user-main'}">我的个人信息</router-link>
+              </el-dropdown-item>
+              <el-dropdown-item @click.native="logoutHandle()">退出</el-dropdown-item>
+            </el-dropdown-menu>
+          </el-dropdown>
+        </el-menu-item>
+      </el-menu>
     </div>
   </nav>
 </template>
@@ -74,19 +91,24 @@
     background: #ffffff;
     height: 100%;
     position: relative;
-    img{
-      display: block;
+    .img{
+      width: 80px;
       height: 36px;
-      width: auto;
+      background: url(~@/assets/img/home.png) center center no-repeat;
+      background-size: auto 36px;
     }
     span{
       position: absolute;
       display: none;
-      bottom: 0;
-      right: -45px;
+      bottom: -15px;
+      right: -25px;
       width: 80px;
     }
     &:hover{
+      .img {
+        background: url(~@/assets/img/home_hover.png) center center no-repeat;
+        background-size: auto 36px;
+      }
       span{ display: block;}
     }
   }

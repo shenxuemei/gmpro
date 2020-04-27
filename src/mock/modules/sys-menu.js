@@ -297,6 +297,34 @@ let navRefundList = [
     'list': []
   }
 ]
+let UserCenterList = [
+  {
+    'id': 20,
+    'parentId': 0,
+    'parentName': null,
+    'name': '我的个人中心',
+    'url': 'demo4/demo',
+    'perms': null,
+    'type': 0,
+    'icon': 'system',
+    'orderNum': 0,
+    'open': null,
+    'list': []
+  },
+  {
+    'id': 21,
+    'parentId': 0,
+    'parentName': null,
+    'name': '个人信息',
+    'url': 'demo4/demo',
+    'perms': null,
+    'type': 0,
+    'icon': 'system',
+    'orderNum': 0,
+    'open': null,
+    'list': []
+  }
+]
 // 获取导航菜单列表 / 权限
 export function nav () {
   return {
@@ -308,7 +336,8 @@ export function nav () {
       'code': 0,
       'menuList': navDataList,
       'navRefundList': navRefundList,
-      'navCollectionList': navCollectionList
+      'navCollectionList': navCollectionList,
+      'userCenterList': UserCenterList
     }
   }
 }

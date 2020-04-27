@@ -516,7 +516,7 @@ img {
 }
 .item-nav{
   height: 36px;
-  padding-left: 40px;
+  padding-left: 26px;
   text-align: left;
   width: 100%;
   position: relative;
@@ -525,6 +525,8 @@ img {
     display: inline-block;
     height: 36px;
     line-height: 36px;
+    font-size: 14px;
+    color: #666666;
   }
   &::before{
     display: inline-block;
@@ -533,7 +535,7 @@ img {
     width: 20px;
     height: 20px;
     top: 8px;
-    left: 16px;
+    left: 0px;
     background: url(../img/icon_nav_01.png) center center no-repeat;
     background-size: 22px auto;
   }
@@ -554,6 +556,7 @@ img {
     background-size: 16px auto;
   }
 }
+
 .fix-box-bottom{
   position: fixed;
   bottom: 0;
@@ -620,7 +623,9 @@ img {
 .el-table--medium td, .el-table--medium th{
   padding: 3px 0;
 }
-
+.el-menu-item-group__title{
+  padding-left: 0px!important;
+}
 // form
 .card-no-padd{
   .el-card__body{
