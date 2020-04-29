@@ -1,7 +1,7 @@
 <template>
   <aside class="site-sidebar" :class="'site-sidebar--' + sidebarLayoutSkin">
-    <div class="site-sidebar__inner">
-      <!-- <div class="g_head"><h2>我的应用</h2></div> -->
+    <div class="site-sidebar__inner" v-if="!sidebarFold">
+      <div class="g_head"><h2>我的应用</h2></div>
       <el-menu
         :default-active="menuActiveName || 'home'"
         :collapse="sidebarFold"
@@ -53,6 +53,30 @@
       </el-menu>
       <div class="fix-box-bottom">
          <router-link target="_blank" :to="{name:'morelists'}">更多...</router-link>
+      </div>
+    </div>
+    <div class="site-sidebar__inner" v-if="sidebarFold">
+      <el-menu
+        v-if="sidebarFold"
+        :default-active="menuActiveName || 'home'"
+        :collapse="sidebarFold"
+        :collapseTransition="false"
+        class="site-sidebar__menu">
+          <sub-menu
+            v-for="menu in menuList"
+            :key="menu.menuId"
+            :menu="menu"
+            :dynamicMenuRoutes="dynamicMenuRoutes">
+          </sub-menu>
+          <sub-menu
+            v-for="menu in navRefundList"
+            :key="menu.menuId"
+            :menu="menu"
+            :dynamicMenuRoutes="dynamicMenuRoutesRefundList">
+          </sub-menu>
+      </el-menu>
+      <div class="fix-box-bottom-small">
+         <router-link target="_blank" :to="{name:'morelists'}"></router-link>
       </div>
     </div>
   </aside>

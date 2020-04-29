@@ -1,16 +1,18 @@
 <template>
   <nav class="site-navbar" :class="'site-navbar--' + navbarLayoutType">
     <div class="site-navbar__header">
-      <h1 class="site-navbar__brand" @click="$router.push({ name: 'home' })">
-        <a class="site-navbar__brand-lg" href="javascript:;">关贸大师</a>
-        <a class="site-navbar__brand-mini" href="javascript:;"></a>
+      <h1 class="site-navbar__brand" @click="$router.push({ name: 'applyhome' })">
+        <a class="site-navbar__brand-lg" href="javascript:;">
+          关贸大师
+        </a>
+        <a class="site-navbar__brand-mini" @click="$router.push({ name: 'applyhome' })" href="javascript:;">&nbsp;</a>
       </h1>
     </div>
     <div class="site-navbar__body clearfix">
       <div class="site-navbar__menu home-nav">
         <div class="item" @click="$router.push({ name: 'applyhome' })"><div class="img"></div><span>应用中心</span></div>
       </div>
-       <el-menu
+      <el-menu
         class="site-navbar__menu site-navbar__menu--right"
         mode="horizontal">
         <el-menu-item class="site-navbar__avatar" index="3">
@@ -36,6 +38,7 @@
   export default {
     data () {
       return {
+        updatePassowrdVisible: false
       }
     },
     computed: {
@@ -55,6 +58,13 @@
       }
     },
     methods: {
+      // 修改密码
+      updatePasswordHandle () {
+        this.updatePassowrdVisible = true
+        this.$nextTick(() => {
+          this.$refs.updatePassowrd.init()
+        })
+      },
       // 退出
       logoutHandle () {
         this.$confirm(`确定进行[退出]操作?`, '提示', {

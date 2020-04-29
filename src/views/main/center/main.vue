@@ -15,7 +15,7 @@
 </template>
 
 <script>
-  import UseNavbar from './use-navbar'
+  import UseNavbar from '../common-main-navbar.vue'
   import UserSidebar from './user-sidebar'
   import UserContent from './user-content'
   export default {

@@ -16,7 +16,7 @@
 </template>
 
 <script>
-  import MainNavbar from './main-navbar'
+  import MainNavbar from '../common-main-navbar.vue'
   import MainSidebar from './main-sidebar'
   import MainRightbar from './main-rightbar'
   import MainContent from './main-content'
