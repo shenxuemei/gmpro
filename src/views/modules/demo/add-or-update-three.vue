@@ -187,6 +187,7 @@
           userName2: '',
           userName3: ''
         },
+        dataRule: {},
         dataList: [],
         pageIndex: 1,
         pageSize: 10,

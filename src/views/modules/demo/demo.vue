@@ -1,18 +1,86 @@
 <template>
-  <div>
+  <div class="card-no-padd">
+    <div class="demo-form-head" v-if="!addOrUpdateVisible">
+      <div class="h2-head">
+        <span class="show-btn" @click="sidebarFold = !sidebarFold"></span>
+        <div class="h2-title">
+          <h2 v-if="!titleFlag">{{dataForm.name}}</h2>
+          <el-input v-model="dataForm.name" class="input-title" v-if="titleFlag"></el-input>
+        </div>
+        <div class="more-btn-box">
+          <el-dropdown>
+            <span class="more-btn"></span>
+            <el-dropdown-menu slot="dropdown">
+              <el-dropdown-item><span @click="editTitle()">修改标题</span></el-dropdown-item>
+              <el-dropdown-item><span>更多操作</span></el-dropdown-item>
+            </el-dropdown-menu>
+          </el-dropdown>
+        </div>
+      </div>
+      <div class="button-list">
+        <span class="item icon-item1_collect" @click="collecttion()" v-if="!collecttionFlag"></span>
+        <span class="item icon-item1" @click="collecttion()" v-if="collecttionFlag"></span>
+        <span class="item icon-item6" @click="$router.push({ name: 'applyhome' })"></span>
+      </div>
+    </div>
+    <div class="fidopera-box" v-if="!addOrUpdateVisible">
+      <div class="fid-box">
+        <span>FID:</span>
+        <span>[dfhakdjfkaueio37284738]</span>
+      </div>
+      <div class="operation-box">
+        <div class="item"><span>打印</span></div>
+        <div class="item"><span>下载PDF</span></div>
+        <div class="item"><span>导出XML</span></div>
+        <div class="item"><span>下载CSV</span></div>
+      </div>
+    </div>
     <div class="mod-user" v-if="!addOrUpdateVisible">
-      <el-form :inline="true" :model="dataForm" @keyup.enter.native="getDataList()">
+      <el-form :inline="true" :model="dataForm" @keyup.enter.native="getDataList()" label-width="130px">
         <el-row>
           <el-form-item label="账册编号：">
-            <el-input v-model="dataForm.userName" clearable></el-input>
+            <el-select clearable 
+              v-model="dataForm.type" placeholder="请选择">
+              <el-option
+                v-for="item in param1List"
+                :key="item.key"
+                :value="item.key"
+                :label="item.value">
+              </el-option>
+            </el-select>
+          </el-form-item>
+          <el-form-item label="预录入统一编号：">
+            <el-input v-model="dataForm.param2" clearable></el-input>
+          </el-form-item>
+          <el-form-item label="申报单位代码：">
+            <el-input v-model="dataForm.param3" clearable></el-input>
           </el-form-item>
         </el-row>
         <el-row>
-          <el-form-item label="账册编号2：">
-            <el-input v-model="dataForm.userName2" clearable></el-input>
+          <el-form-item label="经营单位代码：">
+            <el-input v-model="dataForm.param4" clearable></el-input>
           </el-form-item>
-          <el-form-item label="账册编号3：">
-            <el-input v-model="dataForm.userName3" clearable></el-input>
+          <el-form-item label="经营单位名称：">
+            <el-input v-model="dataForm.param5" clearable></el-input>
+          </el-form-item>
+          <el-form-item label="申报单位代码：">
+            <el-input v-model="dataForm.param6" clearable></el-input>
+          </el-form-item>
+        </el-row>
+        <el-row>
+          <el-form-item label="申报时间：">
+            <el-date-picker
+              v-model="dataForm.param7"
+              type="daterange"
+              range-separator="~"
+              start-placeholder="开始日期"
+              end-placeholder="结束日期">
+            </el-date-picker>
+          </el-form-item>
+          <el-form-item label="数据状态：">
+            <el-checkbox-group v-model="dataForm.param8">
+              <el-checkbox v-for="item in param8List" :key="item.id" :label="item.id">{{ item.name }}</el-checkbox>
+            </el-checkbox-group>
           </el-form-item>
         </el-row>
         <!-- <el-form-item>
@@ -136,6 +204,7 @@
   export default {
     data () {
       return {
+        collecttionFlag: false,
         operation: null,
         operationList: [
           {'key': 0, 'value': 'add'},
@@ -149,10 +218,27 @@
           {'key': 'creattime', 'value': '创建时间'},
           {'key': 'status', 'value': '状态'}
         ],
+        param1List: [
+          {'key': 1, 'value': '111111142123'},
+          {'key': 2, 'value': '22222242123'},
+          {'key': 3, 'value': '333333342123'},
+        ],
+        param8List: [
+          {'id': 1, 'name': '全部'},
+          {'id': 2, 'name': '退单'},
+          {'id': 3, 'name': '暂存'},
+          {'id': 4, 'name': '终审通过'},
+          {'id': 5, 'name': '申报'}
+        ],
         dataForm: {
-          userName: '',
-          userName2: '',
-          userName3: ''
+          name: '电子账册备案与更改',
+          param1: '',
+          param2: '',
+          param3: '',
+          param4: '',
+          param5: '',
+          param6: '',
+          param8: []
         },
         dataList: [],
         pageIndex: 1,
@@ -170,6 +256,9 @@
       this.getDataList()
     },
     methods: {
+      collecttion () {
+        this.collecttionFlag = !this.collecttionFlag
+      },
       /**
        * 显示字段 移除tag事件
        */

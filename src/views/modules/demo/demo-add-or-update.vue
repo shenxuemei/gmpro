@@ -1,7 +1,22 @@
 <template>
-  <el-card v-if="visible" class="card-no-padd">
+  <div v-if="visible">
     <div class="demo-form-head">
-      <h2>电子账册备案与更改</h2>
+      <div class="h2-head">
+        <span class="show-btn" @click="sidebarFold = !sidebarFold"></span>
+        <div class="h2-title">
+          <h2 v-if="!titleFlag">{{dataForm.name}}</h2>
+          <el-input v-model="dataForm.name" class="input-title" v-if="titleFlag"></el-input>
+        </div>
+        <div class="more-btn-box">
+          <el-dropdown>
+            <span class="more-btn"></span>
+            <el-dropdown-menu slot="dropdown">
+              <el-dropdown-item><span @click="editTitle()">修改标题</span></el-dropdown-item>
+              <el-dropdown-item><span>更多操作</span></el-dropdown-item>
+            </el-dropdown-menu>
+          </el-dropdown>
+        </div>
+      </div>
       <div class="button-list">
         <span class="item icon-item1"></span>
         <span class="item icon-item2"></span>
@@ -10,11 +25,17 @@
         <span class="item icon-item5"></span>
       </div>
     </div>
-    <div class="operation-box">
-      <div class="item"><span>打印</span></div>
-      <div class="item"><span>下载PDF</span></div>
-      <div class="item"><span>导出XML</span></div>
-      <div class="item"><span>下载CSV</span></div>
+    <div class="fidopera-box">
+      <div class="fid-box">
+        <span>FID:</span>
+        <span>[8495-dfs9-445]</span>
+      </div>
+      <div class="operation-box">
+        <div class="item"><span>打印</span></div>
+        <div class="item"><span>下载PDF</span></div>
+        <div class="item"><span>导出XML</span></div>
+        <div class="item"><span>下载CSV</span></div>
+      </div>
     </div>
     <div class="demo-form">
       <el-tabs v-model="activeName" @tab-click="handleClick">
@@ -32,7 +53,7 @@
         </el-tab-pane>
       </el-tabs>
     </div>
-  </el-card>
+  </div>
 </template>
 
 <script>
@@ -44,9 +65,11 @@
     data () {
       return {
         visible: false,
+        titleFlag: false,
         activeName: 'first',
         dataForm: {
-          id: 0
+          id: 0,
+          name: '电子账册备案与更改'
         }
       }
     },
@@ -56,7 +79,16 @@
       AddOrUpdateThree,
       AddOrUpdateFour
     },
+    computed: {
+      sidebarFold: {
+        get () { return this.$store.state.common.sidebarFold },
+        set (val) { this.$store.commit('common/updateSidebarFold', val) }
+      }
+    },
     methods: {
+      editTitle () {
+        this.titleFlag = true
+      },
       handleClick (tab, event) {
         console.log(tab, event)
       },

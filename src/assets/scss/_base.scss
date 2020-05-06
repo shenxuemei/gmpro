@@ -615,6 +615,10 @@ img {
 /**homer*/
 .mod-home {}
 /**reset element UI css*/
+.el-range-editor.el-input__inner{
+  padding: 0px 10px;
+}
+.el-range-editor--medium.el-input__inner{  height: 28px;}
 .el-form-item{
   margin-bottom: 6px;
   .el-input--medium .el-input__inner{
@@ -654,62 +658,115 @@ img {
 .card-no-padd{
   .el-card__body{
     padding: 0;
-    .demo-form-head{
+  }
+  .demo-form-head{
+    height: 45px;
+    width: 100%;
+    padding: 0 20px;
+    position: relative;
+    border-bottom: 1px solid #9f9f9f;
+    .h2-head{
+      width: 50%;
       height: 45px;
-      width: 100%;
-      padding: 0 20px;
-      position: relative;
-      border-bottom: 1px solid #9f9f9f;
-      h2{
-        width: 350px;
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: 999;
+      .show-btn, .more-btn-box{
         display: block;
+        float: left;
+        width: 30px;
         height: 45px;
-        line-height: 45px;
-        font-size: 16px;
-        font-weight: 400;
       }
-      .button-list{
-        width: 100%;
+      .show-btn{
+        background: url(../img/icon_form_02.png) center center no-repeat;
+        background-size: 20px auto;
+      }
+      .more-btn-box .more-btn{
+        display: block;
+        width: 30px;
         height: 45px;
-        padding-left: 370px;
-        padding-right: 20px;
-        position: absolute;
-        top: 0;
-        right: 0;
-        text-align: right;
-        .item{
-          display: inline-block;
-          margin-top: 13px;
-          width: 20px;
-          height: 20px;
-          margin-left: 10px;
+        background: url(../img/icon_more_select.png) center center no-repeat;
+        background-size: 20px auto;
+      }
+      .h2-title{
+        display: block;
+        float: left;
+        height: 45px;
+        h2{
+          height: 45px;
+          line-height: 45px;
+          font-size: 16px;
+          font-weight: 400;
         }
-        .item.icon-item1{
-          background: url(../img/icon_form_01.png) center center no-repeat;
-          background-size: 20px auto;
-        }
-        .item.icon-item2{
-          background: url(../img/icon_form_02.png) center center no-repeat;
-          background-size: 20px auto;
-        }
-        .item.icon-item3{
-          background: url(../img/icon_form_03.png) center center no-repeat;
-          background-size: 20px auto;
-        }
-        .item.icon-item4{
-          background: url(../img/icon_form_04.png) center center no-repeat;
-          background-size: 20px auto;
-        }
-        .item.icon-item5{
-          background: url(../img/icon_form_05.png) center center no-repeat;
-          background-size: 20px auto;
+        .input-title{
+          width: 100%;
+          height: 36px;
+          margin-top: 10px;
         }
       }
     }
+    .button-list{
+      width: 50%;
+      height: 45px;
+      padding-right: 20px;
+      position: absolute;
+      z-index: 998;
+      top: 0;
+      right: 0;
+      text-align: right;
+      .item{
+        display: inline-block;
+        margin-top: 13px;
+        width: 20px;
+        height: 20px;
+        margin-left: 10px;
+      }
+      .item.icon-item1{
+        background: url(../img/icon_form_01.png) center center no-repeat;
+        background-size: 20px auto;
+      }
+      .item.icon-item1_collect{
+        background: url(../img/icon_form_01_collection.png) center center no-repeat;
+        background-size: 20px auto;
+      }
+      .item.icon-item2{
+        background: url(../img/icon_form_02.png) center center no-repeat;
+        background-size: 20px auto;
+      }
+      .item.icon-item3{
+        background: url(../img/icon_form_03.png) center center no-repeat;
+        background-size: 20px auto;
+      }
+      .item.icon-item4{
+        background: url(../img/icon_form_04.png) center center no-repeat;
+        background-size: 20px auto;
+      }
+      .item.icon-item5{
+        background: url(../img/icon_form_05.png) center center no-repeat;
+        background-size: 20px auto;
+      }
+      .item.icon-item6{
+        background: url(../img/icon_close_btn.png) center center no-repeat;
+        background-size: 20px auto;
+      }
+    }
+  }
+  .fidopera-box{
+    width: 100%;
+    height: 30px;
+    position: relative;
+    .fid-box{
+      width: 50%;
+      position: absolute;
+      top: 4px;
+      left: 20px;
+    }
     .operation-box{
-      padding-top: 3px;
-      width: 100%;
-      height: 30px;
+      width: 50%;
+      position: absolute;
+      top: 3px;
+      right: 0;
       text-align: right;
       .item{
         height: 22px;
@@ -726,10 +783,10 @@ img {
         }
       }
     }
-    .demo-form{
-      padding: 20px;
-      border-bottom: 1px solid #efefef;
-    }
+  }
+  .demo-form{
+    padding: 20px;
+    border-bottom: 1px solid #efefef;
   }
 }
 .btns-box{
