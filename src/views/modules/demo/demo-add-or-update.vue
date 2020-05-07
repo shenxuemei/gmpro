@@ -37,19 +37,27 @@
         <div class="item"><span>下载CSV</span></div>
       </div>
     </div>
-    <div class="demo-form">
+    <div class="demo-form tab-box">
       <el-tabs v-model="activeName" @tab-click="handleClick">
         <el-tab-pane label="表头信息" name="first">
-          <AddOrUpdateOne></AddOrUpdateOne>
+          <div class="item">
+            <AddOrUpdateOne></AddOrUpdateOne>
+          </div>
         </el-tab-pane>
         <el-tab-pane label="备案料件" name="second">
-          <AddOrUpdateTwo></AddOrUpdateTwo>
+          <div class="item">
+            <AddOrUpdateTwo></AddOrUpdateTwo>
+          </div>
         </el-tab-pane>
         <el-tab-pane label="备案成品" name="third">  
-          <AddOrUpdateThree></AddOrUpdateThree>        
+          <div class="item">
+            <AddOrUpdateThree></AddOrUpdateThree>
+          </div>     
         </el-tab-pane>
         <el-tab-pane label="单损耗" name="fourth">
-          <AddOrUpdateFour></AddOrUpdateFour>
+          <div class="item">
+            <AddOrUpdateFour></AddOrUpdateFour>
+          </div>
         </el-tab-pane>
       </el-tabs>
     </div>
@@ -61,6 +69,7 @@
   import AddOrUpdateTwo from './add-or-update-two'
   import AddOrUpdateThree from './add-or-update-three'
   import AddOrUpdateFour from './add-or-update-four'
+  import $ from 'jquery'
   export default {
     data () {
       return {
@@ -89,14 +98,18 @@
       editTitle () {
         this.titleFlag = true
       },
-      handleClick (tab, event) {
+      handleClick(tab, event) {
         console.log(tab, event)
+        let idName = tab.$el.id
+        $(".tab-box .item").css({marginLeft: '100%'})
+        $("#" + idName + ' .item').animate({marginLeft: '0%'})
       },
       init (id) {
         this.dataForm.id = id || 0
         this.visible = true
         this.$nextTick(() => {
-          this.$refs['dataForm'].resetFields()
+          // this.$refs['dataForm'].resetFields()
+          $("#pane-" + this.activeName + ' .item').css({marginLeft: '0%'})
         }).then(() => {
           if (this.dataForm.id) {
             this.$http({

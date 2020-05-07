@@ -786,7 +786,7 @@ img {
   }
   .demo-form{
     padding: 20px;
-    border-bottom: 1px solid #efefef;
+    // border-bottom: 1px solid #efefef;
   }
 }
 .btns-box{
@@ -816,4 +816,66 @@ img {
   }
   .btns-back { left: 0px;}
   .btns-next{ right: 0; }
+}
+.form-seach { text-align: right;}
+.part1-box{
+  margin-top: 20px;
+  position: relative;
+  .part-btns-box{
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 999;
+    width: 320px;
+    height: 30px;
+    .icon-item {
+      width: 58px;
+      height: 30px;
+      display: block;
+      border: 1px solid #efefef;
+      border-radius: 15px;
+      float: left;
+      margin-left: 20px;
+    }
+    .icon-01{
+      background: url(../img/icon_part_01.png) center center no-repeat;
+      background-size: 18px auto;
+    }
+    .icon-02{
+      background: url(../img/icon_part_02.png) center center no-repeat;
+      background-size: 18px auto;
+    }
+    .icon-03{
+      background: url(../img/icon_part_03.png) center center no-repeat;
+      background-size: 18px auto;
+    }
+    .icon-04{
+      background: url(../img/icon_part_04.png) center center no-repeat;
+      background-size: 18px auto;
+    }
+  }
+  .el-tabs{
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 990;
+    width: 100%;
+  }
+  .part1-seach .el-form-item--medium .el-form-item__content{
+    height: auto;
+  }
+}
+.el-tabs{
+  .el-tabs__content{
+    overflow: visible!important;
+  }
+}
+.tab-box{
+  width: 100%;
+  height: auto;
+}
+.tab-box .item {
+  height: 200px;
+  width: 100%;
+  margin-left: 100%;
 }

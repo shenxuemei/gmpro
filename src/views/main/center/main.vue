@@ -7,7 +7,7 @@
     <template v-if="!loading">
       <use-navbar />
       <user-sidebar />
-      <div class="site-content__wrapper" :style="{ 'min-height': documentClientHeight + 'px' }">
+      <div class="site-content__wrapper" :style="{ 'min-height': documentClientHeight + 'px' }" style="overflow-y: scroll;">
         <user-content />
       </div>
     </template>
