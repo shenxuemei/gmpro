@@ -18,16 +18,20 @@
             </el-dropdown>
           </div>
         </div>
-        <div class="button-list">
-          <el-tooltip effect="dark" content="收藏" placement="bottom" v-if="collecttionFlag">
-            <span class="item icon-item1" @click="collecttion()"></span>
-          </el-tooltip>
-          <el-tooltip effect="dark" content="取消收藏" placement="bottom" v-if="!collecttionFlag">
-            <span class="item icon-item1_collect" @click="collecttion()"></span>
-          </el-tooltip>
-          <el-tooltip effect="dark" content="关闭" placement="bottom">
-            <span class="item icon-item9" @click="$router.push({ name: 'applyhome' })"></span>
-          </el-tooltip>
+        <div class="button-list w80">
+          <div class="tool-item">
+            <el-tooltip effect="dark" content="收藏" placement="bottom" v-if="collecttionFlag">
+              <span class="item icon-item1" @click="collecttion()"></span>
+            </el-tooltip>
+            <el-tooltip effect="dark" content="取消收藏" placement="bottom" v-if="!collecttionFlag">
+              <span class="item icon-item1_collect" @click="collecttion()"></span>
+            </el-tooltip>
+          </div>
+          <div class="tool-item">
+            <el-tooltip effect="dark" content="关闭" placement="bottom">
+              <span class="item icon-item9" @click="$router.push({ name: 'applyhome' })"></span>
+            </el-tooltip>
+          </div>
         </div>
       </div>
       <div class="fidopera-box">
@@ -84,6 +88,8 @@
                 end-placeholder="结束日期">
               </el-date-picker>
             </el-form-item>
+          </el-row>
+          <el-row>
             <el-form-item label="数据状态：">
               <el-checkbox-group v-model="dataForm.param8">
                 <el-checkbox v-for="item in param8List" :key="item.id" :label="item.id">{{ item.name }}</el-checkbox>
@@ -440,6 +446,7 @@
       },
       // 获取数据列表
       getDataList () {
+        $('.tab-box .item').css({marginLeft: '0%'})
         this.addOrUpdateVisible = false
         this.dataListLoading = true
         this.$http({

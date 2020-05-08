@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-form :model="dataForm" :rules="dataRule" ref="dataForm" @keyup.enter.native="dataFormSubmit()" label-width="120px">
-      <el-row>
+      <el-row :gutter="20">
         <el-col :span="8">
           <el-form-item label="统一编号" prop="account">
             <el-input v-model="dataForm.account"></el-input>

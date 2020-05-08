@@ -17,37 +17,53 @@
           </el-dropdown>
         </div>
       </div>
-      <div class="button-list">
-        <el-tooltip effect="dark" content="收藏" placement="bottom" v-if="collecttionFlag">
-          <span class="item icon-item1" @click="collecttion()"></span>
-        </el-tooltip>
-        <el-tooltip effect="dark" content="取消收藏" placement="bottom" v-if="!collecttionFlag">
-          <span class="item icon-item1_collect" @click="collecttion()"></span>
-        </el-tooltip>
-        <el-tooltip effect="dark" content="已解锁" placement="bottom" v-if="!lockFlag">
-          <span class="item icon-item2-un" @click="lockFlag = true"></span>
-        </el-tooltip>
-        <el-tooltip effect="dark" content="已锁定" placement="bottom" v-if="lockFlag">
-          <span class="item icon-item2" @click="lockFlag = false"></span>
-        </el-tooltip>
-        <el-tooltip effect="dark" content="审核" placement="bottom">
-          <span class="item icon-item3"></span>
-        </el-tooltip>
-        <el-tooltip effect="dark" content="讨论" placement="bottom">
-          <span class="item icon-item4"></span>
-        </el-tooltip>
-        <el-tooltip effect="dark" content="附件" placement="bottom">
-          <span class="item icon-item5"></span>
-        </el-tooltip>
-        <el-tooltip effect="dark" content="动态" placement="bottom">
-          <span class="item icon-item6"></span>
-        </el-tooltip>
-        <el-tooltip effect="dark" content="邮件" placement="bottom">
-          <span class="item icon-item7"></span>
-        </el-tooltip>
-        <el-tooltip effect="dark" content="返回" placement="bottom">
-          <span class="item icon-item8" @click="back()"></span>
-        </el-tooltip>
+      <div class="button-list w320">
+        <div class="tool-item">
+          <el-tooltip effect="dark" content="收藏" placement="bottom" v-if="collecttionFlag">
+            <span class="item icon-item1 b-R" @click="collecttion()"></span>
+          </el-tooltip>
+          <el-tooltip effect="dark" content="取消收藏" placement="bottom" v-if="!collecttionFlag">
+            <span class="item icon-item1_collect b-R" @click="collecttion()"></span>
+          </el-tooltip>
+        </div>
+        <div class="tool-item">
+          <el-tooltip effect="dark" content="已解锁" placement="bottom" v-if="!lockFlag">
+            <span class="item icon-item2-un" @click="lockFlag = true"></span>
+          </el-tooltip>
+          <el-tooltip effect="dark" content="已锁定" placement="bottom" v-if="lockFlag">
+            <span class="item icon-item2" @click="lockFlag = false"></span>
+          </el-tooltip>
+        </div>
+        <div class="tool-item">
+          <el-tooltip effect="dark" content="审核" placement="bottom">
+            <span class="item icon-item3 b-R"></span>
+          </el-tooltip>
+        </div>
+        <div class="tool-item">
+          <el-tooltip effect="dark" content="讨论" placement="bottom">
+            <span class="item icon-item4"></span>
+          </el-tooltip>
+        </div>
+        <div class="tool-item">
+          <el-tooltip effect="dark" content="附件" placement="bottom">
+            <span class="item icon-item5"></span>
+          </el-tooltip>
+        </div>
+        <div class="tool-item">
+          <el-tooltip effect="dark" content="动态" placement="bottom">
+            <span class="item icon-item6"></span>
+          </el-tooltip>
+        </div>
+        <div class="tool-item">
+          <el-tooltip effect="dark" content="邮件" placement="bottom">
+            <span class="item icon-item7 b-R"></span>
+          </el-tooltip>
+        </div>
+        <div class="tool-item">
+          <el-tooltip effect="dark" content="返回" placement="bottom">
+            <span class="item icon-item8 b-R" @click="back()"></span>
+          </el-tooltip>
+        </div>
       </div>
     </div>
     <div class="unlock">

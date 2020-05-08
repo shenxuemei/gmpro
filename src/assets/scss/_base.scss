@@ -636,6 +636,7 @@ img {
 .el-input--medium .el-input__inner,.el-form-item--medium .el-form-item__content, .el-form-item--medium .el-form-item__label{
   height: 28px;
   line-height: 28px;
+  text-align: left;
 }
 .site-sidebar--dark .site-sidebar__menu.el-menu .el-menu-item:hover,
 .site-sidebar--dark .site-sidebar__menu.el-menu .el-submenu > .el-submenu__title:hover,
@@ -706,21 +707,29 @@ img {
         }
       }
     }
+    .w80{ width: 80px;}
+    .w320{ width: 320px;}
     .button-list{
-      width: 50%;
+      // width: 50%;
       height: 45px;
-      padding-right: 20px;
       position: absolute;
       z-index: 998;
       top: 0;
       right: 0;
       text-align: right;
-      .item{
-        display: inline-block;
-        margin-top: 13px;
-        width: 20px;
+      .tool-item{
+        float: left;
+        width: 40px;
         height: 20px;
-        margin-left: 10px;
+      }
+      .b-R{
+        border-right: 1px solid #e9e9e9;
+      }
+      .item{
+        display: block;
+        margin-top: 13px;
+        width: 40px;
+        height: 20px;
       }
       .item.icon-item1{
         background: url(../img/icon_form_01.png) center center no-repeat;
@@ -777,6 +786,7 @@ img {
       position: absolute;
       top: 4px;
       left: 20px;
+      color: #999999;
     }
     .operation-box{
       width: 50%;
@@ -788,7 +798,7 @@ img {
         height: 22px;
         line-height: 22px;
         display: inline-block;
-        border-left: 1px solid #efefef;
+        border-right: 1px solid #efefef;
         padding: 0 20px;
         &:hover{
           color: $navbar--background-color;
@@ -811,27 +821,50 @@ img {
   margin-bottom: 15px;
   margin-top: 15px;
   position: relative;
-  .btns-formedit,.btns-back, .btns-next{
+  .btns-formedit {
     position: absolute;
     top: 9px;
-    img {
-      width: auto;
+    right: 0px;
+    width: 420px;
+    height: 35px;
+    text-align: center;
+    .mr-20{
+      margin-right: 20px;
+    }
+    .tooltip-item{
+      width: 60px;
       height: 28px;
+      float: left;
+      margin-left: 20px;
+      .item{
+        width: 60px;
+        height: 28px;
+        display: block;
+        border: 1px solid #efefef;
+        border-radius: 18px;
+      }
+      .icon-01{
+        background: url(../img/icon_part_01.png) center center no-repeat;
+        background-size: 18px auto;
+      }
+      .icon-02{
+        background: url(../img/icon_part_02.png) center center no-repeat;
+        background-size: 18px auto;
+      }
+      .icon-03{
+        background: url(../img/icon_part_05.png) center center no-repeat;
+        background-size: 18px auto;
+      }
+      .icon-04{
+        background: url(../img/icon_part_06.png) center center no-repeat;
+        background-size: 18px auto;
+      }
+      .icon-05{
+        background: url(../img/icon_part_07.png) center center no-repeat;
+        background-size: 18px auto;
+      }
     }
   }
-  .btns-formedit{
-    width: 200px;
-    text-align: center;
-    left: 50%;
-    margin-left: -100px;
-    span{ display: inline-block; margin: 0 10px;}
-  }
-  .btns-formedit span, .btns-back, .btns-next{
-    width: 28px;
-    height: 28px;
-  }
-  .btns-back { left: 0px;}
-  .btns-next{ right: 0; }
 }
 .form-seach { text-align: right;}
 .part1-box{
@@ -839,8 +872,9 @@ img {
   position: relative;
   .part-btns-box{
     position: absolute;
-    right: 0;
+    right: 50%;
     top: 0;
+    margin-right: -160px;
     z-index: 999;
     width: 320px;
     height: 30px;

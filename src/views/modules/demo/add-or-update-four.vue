@@ -1,8 +1,8 @@
 <template>
   <div>
     <div class="mod-user" v-if="!addOrUpdateVisible">
-      <el-form :model="dataForm" :rules="dataRule" ref="dataForm" @keyup.enter.native="dataFormSubmit()" label-width="120px">
-        <el-row>
+      <el-form :model="dataForm" :rules="dataRule" ref="dataForm" @keyup.enter.native="dataFormSubmit()" label-width="90px">
+        <el-row :gutter="20">
           <el-col :span="8">
             <el-form-item label="成品项号" prop="account">
               <el-input v-model="dataForm.account"></el-input>
@@ -30,14 +30,53 @@
         </el-row>
       </el-form>
       <el-row class="btns-box">
-        <div class="btns-back"><img src="~@/assets/img/icon_form_03.png"></div>
         <div class="btns-formedit">
-          <span><img src="~@/assets/img/icon_hide_nav.png"></span>
+          <!-- <span><img src="~@/assets/img/icon_hide_nav.png"></span>
           <span><img src="~@/assets/img/icon_show_nav.png"></span>
-          <span><img src="~@/assets/img/icon_complete.png"></span>
+          <span><img src="~@/assets/img/icon_complete.png"></span> -->
+          <div class="tooltip-item">
+            <el-tooltip effect="dark" content="新增" placement="bottom">
+              <span class="item icon-01"></span>
+            </el-tooltip>
+          </div>
+          <div class="tooltip-item">
+            <el-tooltip effect="dark" content="删除" placement="bottom">
+              <span class="item icon-02"></span>
+            </el-tooltip>
+          </div>
+          <div class="tooltip-item mr-20">
+            <el-tooltip effect="dark" content="完成" placement="bottom">
+              <span class="item icon-03"></span>
+            </el-tooltip>
+          </div>
+          <div class="tooltip-item">
+            <el-tooltip effect="dark" content="XX" placement="bottom">
+              <span class="item icon-04"></span>
+            </el-tooltip>
+          </div>
+          <div class="tooltip-item">
+            <el-tooltip effect="dark" content="XX" placement="bottom">
+              <span class="item icon-05"></span>
+            </el-tooltip>
+          </div>
         </div>
-        <div class="btns-next"><img src="~@/assets/img/icon_form_04.png"></div>
       </el-row>
+      <el-form :inline="true" :model="dataForm2" @keyup.enter.native="getDataList()" label-width="80px">
+        <el-row>
+          <el-form-item label="料号">
+            <el-input v-model="dataForm2.param1" clearable></el-input>
+          </el-form-item>
+          <el-form-item label="商品编号">
+            <el-input v-model="dataForm2.param2" clearable></el-input>
+          </el-form-item>
+          <el-form-item label="商品名称">
+            <el-input v-model="dataForm2.param3" clearable></el-input>
+          </el-form-item>
+          <el-form-item>
+           <el-button type="primary" size="small" round>查询</el-button>
+          </el-form-item>
+        </el-row>
+      </el-form>
       <el-row style="margin-bottom: 8px;">
         <el-select style="width: 150px;" clearable 
           :disabled="dataListSelections.length <= 0"
@@ -159,6 +198,11 @@
           userName: '',
           userName2: '',
           userName3: ''
+        },
+        dataForm2: {
+          param1: '',
+          param2: '',
+          param3: ''
         },
         dataList: [],
         pageIndex: 1,
