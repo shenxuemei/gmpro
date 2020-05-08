@@ -18,48 +18,76 @@
         </div>
       </div>
       <div class="button-list">
-        <span class="item icon-item1"></span>
-        <span class="item icon-item2"></span>
-        <span class="item icon-item3"></span>
-        <span class="item icon-item4"></span>
-        <span class="item icon-item5"></span>
+        <el-tooltip effect="dark" content="收藏" placement="bottom" v-if="collecttionFlag">
+          <span class="item icon-item1" @click="collecttion()"></span>
+        </el-tooltip>
+        <el-tooltip effect="dark" content="取消收藏" placement="bottom" v-if="!collecttionFlag">
+          <span class="item icon-item1_collect" @click="collecttion()"></span>
+        </el-tooltip>
+        <el-tooltip effect="dark" content="已解锁" placement="bottom" v-if="!lockFlag">
+          <span class="item icon-item2-un" @click="lockFlag = true"></span>
+        </el-tooltip>
+        <el-tooltip effect="dark" content="已锁定" placement="bottom" v-if="lockFlag">
+          <span class="item icon-item2" @click="lockFlag = false"></span>
+        </el-tooltip>
+        <el-tooltip effect="dark" content="审核" placement="bottom">
+          <span class="item icon-item3"></span>
+        </el-tooltip>
+        <el-tooltip effect="dark" content="讨论" placement="bottom">
+          <span class="item icon-item4"></span>
+        </el-tooltip>
+        <el-tooltip effect="dark" content="附件" placement="bottom">
+          <span class="item icon-item5"></span>
+        </el-tooltip>
+        <el-tooltip effect="dark" content="动态" placement="bottom">
+          <span class="item icon-item6"></span>
+        </el-tooltip>
+        <el-tooltip effect="dark" content="邮件" placement="bottom">
+          <span class="item icon-item7"></span>
+        </el-tooltip>
+        <el-tooltip effect="dark" content="返回" placement="bottom">
+          <span class="item icon-item8" @click="back()"></span>
+        </el-tooltip>
       </div>
     </div>
-    <div class="fidopera-box">
-      <div class="fid-box">
-        <span>FID:</span>
-        <span>[8495-dfs9-445]</span>
+    <div class="unlock">
+      <div class="fidopera-box">
+        <div class="fid-box">
+          <span>FID:</span>
+          <span>[8495-dfs9-445]</span>
+        </div>
+        <div class="operation-box">
+          <div class="item"><span>打印</span></div>
+          <div class="item"><span>下载PDF</span></div>
+          <div class="item"><span>导出XML</span></div>
+          <div class="item"><span>下载CSV</span></div>
+        </div>
       </div>
-      <div class="operation-box">
-        <div class="item"><span>打印</span></div>
-        <div class="item"><span>下载PDF</span></div>
-        <div class="item"><span>导出XML</span></div>
-        <div class="item"><span>下载CSV</span></div>
+      <div class="demo-form tab-box">
+        <el-tabs v-model="activeName" @tab-click="handleClick">
+          <el-tab-pane label="表头信息" name="first">
+            <div class="item">
+              <AddOrUpdateOne></AddOrUpdateOne>
+            </div>
+          </el-tab-pane>
+          <el-tab-pane label="备案料件" name="second">
+            <div class="item">
+              <AddOrUpdateTwo></AddOrUpdateTwo>
+            </div>
+          </el-tab-pane>
+          <el-tab-pane label="备案成品" name="third">  
+            <div class="item">
+              <AddOrUpdateThree></AddOrUpdateThree>
+            </div>     
+          </el-tab-pane>
+          <el-tab-pane label="单损耗" name="fourth">
+            <div class="item">
+              <AddOrUpdateFour></AddOrUpdateFour>
+            </div>
+          </el-tab-pane>
+        </el-tabs>
       </div>
-    </div>
-    <div class="demo-form tab-box">
-      <el-tabs v-model="activeName" @tab-click="handleClick">
-        <el-tab-pane label="表头信息" name="first">
-          <div class="item">
-            <AddOrUpdateOne></AddOrUpdateOne>
-          </div>
-        </el-tab-pane>
-        <el-tab-pane label="备案料件" name="second">
-          <div class="item">
-            <AddOrUpdateTwo></AddOrUpdateTwo>
-          </div>
-        </el-tab-pane>
-        <el-tab-pane label="备案成品" name="third">  
-          <div class="item">
-            <AddOrUpdateThree></AddOrUpdateThree>
-          </div>     
-        </el-tab-pane>
-        <el-tab-pane label="单损耗" name="fourth">
-          <div class="item">
-            <AddOrUpdateFour></AddOrUpdateFour>
-          </div>
-        </el-tab-pane>
-      </el-tabs>
+      <div class="lock-box" v-if="lockFlag"></div>
     </div>
   </div>
 </template>
@@ -73,6 +101,8 @@
   export default {
     data () {
       return {
+        lockFlag: false,
+        collecttionFlag: false,
         visible: false,
         titleFlag: false,
         activeName: 'first',
@@ -98,18 +128,21 @@
       editTitle () {
         this.titleFlag = true
       },
-      handleClick(tab, event) {
+      collecttion () {
+        this.collecttionFlag = !this.collecttionFlag
+      },
+      handleClick (tab, event) {
         console.log(tab, event)
         let idName = tab.$el.id
-        $(".tab-box .item").css({marginLeft: '100%'})
-        $("#" + idName + ' .item').animate({marginLeft: '0%'})
+        $('.tab-box .item').css({marginLeft: '100%'})
+        $('#' + idName + ' .item').animate({marginLeft: '0%'})
       },
       init (id) {
         this.dataForm.id = id || 0
         this.visible = true
         this.$nextTick(() => {
           // this.$refs['dataForm'].resetFields()
-          $("#pane-" + this.activeName + ' .item').css({marginLeft: '0%'})
+          $('#pane-' + this.activeName + ' .item').css({marginLeft: '0%'})
         }).then(() => {
           if (this.dataForm.id) {
             this.$http({
@@ -151,6 +184,10 @@
             })
           }
         })
+      },
+      back () {
+        this.visible = false
+        this.$emit('refreshDataList')
       }
     }
   }

@@ -1,6 +1,6 @@
 <template>
   <div class="card-no-padd">
-    <div class="mod-user" v-if="!addOrUpdateVisible">
+    <div class="mod-user" v-show="!addOrUpdateVisible">
       <div class="demo-form-head">
         <div class="h2-head">
           <span class="show-btn" @click="sidebarFold = !sidebarFold"></span>
@@ -19,9 +19,15 @@
           </div>
         </div>
         <div class="button-list">
-          <span class="item icon-item1_collect" @click="collecttion()" v-if="!collecttionFlag"></span>
-          <span class="item icon-item1" @click="collecttion()" v-if="collecttionFlag"></span>
-          <span class="item icon-item6" @click="$router.push({ name: 'applyhome' })"></span>
+          <el-tooltip effect="dark" content="收藏" placement="bottom" v-if="collecttionFlag">
+            <span class="item icon-item1" @click="collecttion()"></span>
+          </el-tooltip>
+          <el-tooltip effect="dark" content="取消收藏" placement="bottom" v-if="!collecttionFlag">
+            <span class="item icon-item1_collect" @click="collecttion()"></span>
+          </el-tooltip>
+          <el-tooltip effect="dark" content="关闭" placement="bottom">
+            <span class="item icon-item9" @click="$router.push({ name: 'applyhome' })"></span>
+          </el-tooltip>
         </div>
       </div>
       <div class="fidopera-box">
@@ -389,17 +395,16 @@
     },
     activated () {
       this.getDataList()
-      $("#pane-" + this.activeName + ' .item').css({marginLeft: '0%'})
+      $('#pane-' + this.activeName + ' .item').css({marginLeft: '0%'})
     },
     methods: {
       editTitle () {
         this.titleFlag = true
       },
-      handleClick(tab, event) {
-        console.log(tab, event)
+      handleClick (tab, event) {
         let idName = tab.$el.id
-        $(".tab-box .item").css({marginLeft: '100%'})
-        $("#" + idName + ' .item').animate({marginLeft: '0%'})
+        $('.tab-box .item').css({marginLeft: '100%'})
+        $('#' + idName + ' .item').animate({marginLeft: '0%'})
       },
       collecttion () {
         this.collecttionFlag = !this.collecttionFlag
@@ -435,6 +440,7 @@
       },
       // 获取数据列表
       getDataList () {
+        this.addOrUpdateVisible = false
         this.dataListLoading = true
         this.$http({
           url: this.$http.adornUrl('/demo/demo/list'),
