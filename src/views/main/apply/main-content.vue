@@ -32,7 +32,7 @@
       </div>
     </div>
     <!-- 主入口标签页 s -->
-    <div style="padding: 8px;">
+    <div class="cont-box">
       <el-tabs
         v-if="$route.meta.isTab"
         v-model="mainTabsActiveName"
@@ -195,7 +195,11 @@
   }
 </script>
 <style lang="scss">
+.cont-box{
+  padding: 50px 8px 8px 8px;
+}
 .bread-box {
+  z-index: 999;
   width: 100%;
   height: 45px;
   padding-top: 15px;
@@ -203,7 +207,8 @@
   border-bottom: 1px solid #efefef;
   border-left: 1px solid #efefef;
   background: #ffffff;
-  position: relative;
+  position: fixed;
+  top: 50px;
   .item1,.item3{
     height: 45px;
     position: absolute;

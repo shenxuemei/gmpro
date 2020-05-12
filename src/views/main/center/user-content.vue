@@ -176,14 +176,16 @@
 </script>
 <style lang="scss">
 .bread-box {
-  width: 100%;
-  height: 45px;
-  padding-top: 15px;
-  padding-left: 25px;
-  border-bottom: 1px solid #efefef;
-  border-left: 1px solid #efefef;
-  background: #ffffff;
-  position: relative;
+    z-index: 999;
+    width: 100%;
+    height: 44px;
+    padding-top: 15px;
+    padding-left: 25px;
+    border-bottom: 1px solid #efefef;
+    border-left: 1px solid #efefef;
+    background: #ffffff;
+    position: fixed;
+    top: 51px;
   .item1,.item3{
     height: 45px;
     position: absolute;

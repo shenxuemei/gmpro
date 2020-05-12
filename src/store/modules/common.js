@@ -19,7 +19,7 @@ export default {
     // 主入口标签页
     mainTabs: [],
     mainTabsActiveName: '',
-    mainRight: 184
+    mainRight: 33
   },
   mutations: {
     updateDocumentClientHeight (state, height) {
