@@ -37,7 +37,9 @@ const mainRoutes = {
     // 2. iframeUrl: 是否通过iframe嵌套展示内容, '以http[s]://开头': 是, '': 否
     // 提示: 如需要通过iframe嵌套展示内容, 但不通过tab打开, 请自行创建组件使用iframe处理!
     { path: '/applyhome', component: _import('common/applyhome'), name: 'applyhome', meta: { title: '我的应用' } },
-    { path: '/morelists', component: _import('common/more'), name: 'morelists', meta: { title: '更多' } }
+    { path: '/morelists', component: _import('common/more'), name: 'morelists', meta: { title: '更多' } },
+    { path: '/rightBarHelp', component: _import('common/rightBar/help'), name: 'rightBarHelp', meta: { title: '支持帮助' } },
+    { path: '/rightBarMsg', component: _import('common/rightBar/msg'), name: 'rightBarMsg', meta: { title: '系统消息' } }
   ],
   beforeEnter (to, from, next) {
     let token = Vue.cookie.get('token')

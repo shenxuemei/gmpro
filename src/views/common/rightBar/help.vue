@@ -1,5 +1,7 @@
 <template>
-  <div>more...</div>
+  <div>
+    支持帮助页......
+  </div>
 </template>
 
 <script>

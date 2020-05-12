@@ -1,5 +1,7 @@
 <template>
-  <div>more...</div>
+  <div>
+    系统消息页......
+  </div>
 </template>
 
 <script>
